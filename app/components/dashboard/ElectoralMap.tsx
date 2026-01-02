@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui-blocks";
 import { MapContainer, TileLayer, Polygon, Tooltip, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-// import L from "leaflet"; // Removed as per lint suggestion if not strictly needed or handle types
+import { useTheme } from "@/app/contexts/ThemeContext";
 
 // Placeholder coordinates for a generic polygon representing a region (Stylized Colombia-ish shape or Region)
 // In a real app, this would be GeoJSON.
@@ -41,6 +41,7 @@ function MapController() {
 export default function ElectoralMap() {
     // We need to ensure window is defined (client-side only for Leaflet)
     const [isMounted, setIsMounted] = useState(false);
+    const { theme } = useTheme();
 
     useEffect(() => {
         setIsMounted(true);
@@ -55,7 +56,7 @@ export default function ElectoralMap() {
     }
 
     return (
-        <Card className="bg-white text-[#2B3674] h-full">
+        <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white h-full shadow-sm border border-gray-100 dark:border-gray-800">
             <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle>Mapa Electoral Interactivo</CardTitle>
                 <div className="flex gap-2 text-xs">
@@ -69,14 +70,17 @@ export default function ElectoralMap() {
                     zoom={6} 
                     scrollWheelZoom={false} 
                     className="h-full w-full rounded-b-xl"
-                    style={{ background: '#1F2937' }}
+                    style={{ background: theme === 'dark' ? '#111827' : '#EFF6FF' }}
                     maxBounds={[[-5, -82], [13, -66]]}
                     maxBoundsViscosity={1.0}
                 >
                     <MapController />
                      <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+                        url={theme === 'dark' 
+                            ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" 
+                            : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+                        }
                     />
                     {MOCK_REGIONS.map((region, idx) => (
                         <Polygon 
