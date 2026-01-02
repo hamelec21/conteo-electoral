@@ -3,11 +3,13 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui-blocks";
 import { ELECTION_DATA } from "@/app/lib/mockData";
+import { useTheme } from "@/app/contexts/ThemeContext";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { ShieldCheck, Fingerprint, Clock, MapPin } from "lucide-react";
 
 export default function IntegrityTrust() {
     const { integrity } = ELECTION_DATA;
+    const { theme } = useTheme();
 
     // Data for Trust Gauge (Partial Pie)
     const gaugeData = [
@@ -23,7 +25,7 @@ export default function IntegrityTrust() {
     };
 
     return (
-        <Card className="bg-white text-[#2B3674] h-full">
+        <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white h-full border border-gray-100 dark:border-gray-800 shadow-sm">
             <CardHeader>
                 <CardTitle>Integridad y Confianza</CardTitle>
             </CardHeader>
@@ -46,45 +48,45 @@ export default function IntegrityTrust() {
                                 stroke="none"
                             >
                                 <Cell key="cell-0" fill="#05CD99" />
-                                <Cell key="cell-1" fill="#E5E7EB" />
+                                <Cell key="cell-1" fill={theme === 'dark' ? '#374151' : '#E5E7EB'} />
                             </Pie>
                         </PieChart>
                     </ResponsiveContainer>
                     <div className="absolute bottom-8 text-center">
-                        <p className="text-3xl font-bold">{integrity.hashValid}%</p>
-                        <p className="text-xs text-[#A3AED0]">Índice Global</p>
+                        <p className="text-3xl font-bold dark:text-white">{integrity.hashValid}%</p>
+                        <p className="text-xs text-[#A3AED0] dark:text-gray-400">Índice Global</p>
                     </div>
                 </div>
 
                 {/* Metrics Grid */}
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-[#F4F7FE] p-3 rounded-lg min-w-0">
+                    <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
                         <div className="flex items-center gap-2 text-[#05CD99] mb-1">
                             <ShieldCheck className="w-4 h-4 flex-shrink-0" />
-                            <span className="text-xs font-bold text-[#A3AED0]">Hash Válido</span>
+                            <span className="text-xs font-bold text-[#A3AED0] dark:text-gray-400">Hash Válido</span>
                         </div>
-                        <p className="text-lg font-bold">{integrity.hashValid}%</p>
+                        <p className="text-lg font-bold dark:text-white">{integrity.hashValid}%</p>
                     </div>
-                    <div className="bg-[#F4F7FE] p-3 rounded-lg min-w-0">
-                        <div className="flex items-center gap-2 text-[#4318FF] mb-1">
+                    <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
+                        <div className="flex items-center gap-2 text-[#4318FF] dark:text-[#7551FF] mb-1">
                             <Fingerprint className="w-4 h-4 flex-shrink-0" />
-                            <span className="text-xs font-bold text-[#A3AED0]">Firma Digital</span>
+                            <span className="text-xs font-bold text-[#A3AED0] dark:text-gray-400">Firma Digital</span>
                         </div>
-                        <p className="text-lg font-bold">{integrity.signatureValid}%</p>
+                        <p className="text-lg font-bold dark:text-white">{integrity.signatureValid}%</p>
                     </div>
-                     <div className="bg-[#F4F7FE] p-3 rounded-lg min-w-0">
+                     <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
                         <div className="flex items-center gap-2 text-[#FFB547] mb-1">
                             <Clock className="w-4 h-4 flex-shrink-0" />
-                            <span className="text-xs font-bold text-[#A3AED0]">Sello Tiempo</span>
+                            <span className="text-xs font-bold text-[#A3AED0] dark:text-gray-400">Sello Tiempo</span>
                         </div>
-                        <p className="text-lg font-bold">{integrity.timestampValid}%</p>
+                        <p className="text-lg font-bold dark:text-white">{integrity.timestampValid}%</p>
                     </div>
-                     <div className="bg-[#F4F7FE] p-3 rounded-lg min-w-0">
-                        <div className="flex items-center gap-2 text-[#E5E7EB] mb-1">
-                            <MapPin className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                            <span className="text-xs font-bold text-[#A3AED0]">Geolocalización</span>
+                     <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
+                        <div className="flex items-center gap-2 text-[#E5E7EB] dark:text-gray-500 mb-1">
+                            <MapPin className="w-4 h-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />
+                            <span className="text-xs font-bold text-[#A3AED0] dark:text-gray-400">Geolocalización</span>
                         </div>
-                         <p className="text-lg font-bold">{integrity.geoValid}%</p>
+                         <p className="text-lg font-bold dark:text-white">{integrity.geoValid}%</p>
                     </div>
                 </div>
             </CardContent>

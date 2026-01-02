@@ -13,14 +13,14 @@ export function CandidateList({ data }: { data: any[] }) {
     const sortedCandidates = [...data].sort((a, b) => b.votes - a.votes);
 
     return (
-        <Card className="bg-white text-[#2B3674] h-full shadow-sm">
+        <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white h-full shadow-sm border border-gray-100 dark:border-gray-800">
             <CardHeader>
                 <CardTitle>Resultados Generales</CardTitle>
             </CardHeader>
             <CardContent>
                 <div className="flex flex-col gap-4">
                     {sortedCandidates.map((candidate, idx) => (
-                        <div key={idx} className="flex items-center gap-4 p-3 rounded-xl bg-white hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100 shadow-sm hover:shadow-md">
+                        <div key={idx} className="flex items-center gap-4 p-3 rounded-xl bg-white dark:bg-gray-800/50 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700 shadow-sm hover:shadow-md">
                             {/* Photo & Rank */}
                             <div className="relative">
                                 <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm">
@@ -35,16 +35,16 @@ export function CandidateList({ data }: { data: any[] }) {
                             <div className="flex-1 min-w-0">
                                 <div className="flex justify-between items-center mb-1">
                                     <div className="min-w-0 pr-4">
-                                        <h4 className="text-[#2B3674] font-bold text-sm truncate" title={candidate.name}>{candidate.name}</h4>
-                                        <p className="text-[#A3AED0] text-xs truncate" title={candidate.profession}>{candidate.profession}</p>
+                                        <h4 className="text-[#2B3674] dark:text-white font-bold text-sm truncate" title={candidate.name}>{candidate.name}</h4>
+                                        <p className="text-[#A3AED0] dark:text-gray-400 text-xs truncate" title={candidate.profession}>{candidate.profession}</p>
                                     </div>
                                     <div className="text-right flex-shrink-0">
-                                        <p className="text-[#2B3674] font-bold text-sm">{formatNumber(candidate.votes)}</p>
+                                        <p className="text-[#2B3674] dark:text-white font-bold text-sm">{formatNumber(candidate.votes)}</p>
                                         <p className="text-[#05CD99] text-xs font-bold">{candidate.percent}%</p>
                                     </div>
                                 </div>
                                 {/* Progress Bar */}
-                                <div className="w-full bg-[#F4F7FE] rounded-full h-2">
+                                <div className="w-full bg-[#F4F7FE] dark:bg-gray-700 rounded-full h-2">
                                     <div 
                                         className="h-2 rounded-full transition-all duration-500" 
                                         style={{ width: `${candidate.percent}%`, backgroundColor: candidate.color }}
@@ -69,7 +69,7 @@ export function EvolutionChart({ data }: { data: any[] }) {
     };
 
     return (
-        <Card className="bg-white text-[#2B3674] shadow-sm h-full">
+        <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white shadow-sm h-full border border-gray-100 dark:border-gray-800">
             <CardHeader>
                 <CardTitle>Evolución del Preconteo</CardTitle>
             </CardHeader>

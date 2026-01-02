@@ -44,18 +44,18 @@ export default function KPICards() {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
             {cards.map((card, idx) => (
-                <Card key={idx} className={card.featured ? "bg-[#4318FF] text-white" : "bg-white text-[#2B3674]"}>
+                <Card key={idx} className={card.featured ? "bg-[#4318FF] text-white border-transparent" : "bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white border-gray-100 dark:border-gray-800"}>
                     <CardContent className="p-4 flex flex-col justify-between h-full"> 
                         <div className="flex items-center gap-3 mb-2">
-                             <div className={`p-2 rounded-full ${card.featured ? 'bg-white/20' : 'bg-[#F4F7FE]'}`}>
+                             <div className={`p-2 rounded-full ${card.featured ? 'bg-white/20' : 'bg-[#F4F7FE] dark:bg-gray-800'}`}>
                                 {card.icon}
                              </div>
-                             {!card.featured && <p className="text-[#A3AED0] text-sm font-medium">{card.label}</p>}
+                             {!card.featured && <p className="text-[#A3AED0] dark:text-gray-400 text-sm font-medium">{card.label}</p>}
                              {card.featured && <p className="text-gray-100 text-sm font-medium">{card.label}</p>}
                         </div>
                         <div>
                             <p className="text-2xl font-bold tracking-tight">{card.value}</p>
-                            <p className={`text-xs mt-1 ${card.featured ? 'text-gray-200' : 'text-[#A3AED0]'}`}>{card.sub}</p>
+                            <p className={`text-xs mt-1 ${card.featured ? 'text-gray-200' : 'text-[#A3AED0] dark:text-gray-400'}`}>{card.sub}</p>
                         </div>
                     </CardContent>
                 </Card>

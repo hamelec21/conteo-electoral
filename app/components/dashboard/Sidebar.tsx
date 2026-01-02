@@ -95,12 +95,12 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
                                 className={`
                                     w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group
                                     ${active
-                                        ? "bg-[#F4F7FE] dark:bg-gray-800 text-[#4318FF]" 
+                                        ? "bg-[#F4F7FE] dark:bg-gray-800 text-[#4318FF] dark:text-blue-400" 
                                         : "hover:bg-[#F4F7FE] dark:hover:bg-gray-800 text-[#A3AED0] dark:text-gray-400 hover:text-[#2B3674] dark:hover:text-white"
                                     }
                                 `}
                             >
-                                <Icon className={`w-4 h-4 ${active ? "text-[#4318FF]" : "text-[#A3AED0] dark:text-gray-400 group-hover:text-[#4318FF]"}`} />
+                                <Icon className={`w-4 h-4 ${active ? "text-[#4318FF] dark:text-blue-400" : "text-[#A3AED0] dark:text-gray-400 group-hover:text-[#4318FF] dark:group-hover:text-white"}`} />
                                 <span className={`font-medium text-sm ${active ? "font-semibold" : ""}`}>{item.name}</span>
                                 {active && (
                                     <div className="ml-auto w-1.5 h-1.5 bg-[#4318FF] rounded-full" />

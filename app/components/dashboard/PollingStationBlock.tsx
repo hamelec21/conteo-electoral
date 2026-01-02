@@ -12,14 +12,14 @@ export default function PollingStationBlock() {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {/* Table Section */}
-            <Card className="bg-white text-[#2B3674] col-span-1 lg:col-span-3 h-full">
+            <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white col-span-1 lg:col-span-3 h-full shadow-sm border border-gray-100 dark:border-gray-800">
                 <CardHeader>
                     <CardTitle>Ver las Mesas</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
                     <div className="overflow-x-auto">
                         <table className="w-full text-sm text-left">
-                            <thead className="text-xs text-[#A3AED0] uppercase bg-gray-50">
+                            <thead className="text-xs text-[#A3AED0] dark:text-gray-400 uppercase bg-gray-50 dark:bg-gray-800">
                                 <tr>
                                     <th className="px-6 py-3">Mesa</th>
                                     <th className="px-6 py-3">Puesto</th>
@@ -35,7 +35,7 @@ export default function PollingStationBlock() {
                                     <tr 
                                         key={station.id} 
                                         onClick={() => setSelectedStation(station)}
-                                        className={`border-b border-gray-100 cursor-pointer hover:bg-gray-50 transition-colors ${selectedStation.id === station.id ? 'bg-blue-50' : ''}`}
+                                        className={`border-b border-gray-100 dark:border-gray-800 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ${selectedStation.id === station.id ? 'bg-blue-50 dark:bg-blue-900/30' : ''}`}
                                     >
                                         <td className="px-6 py-4 font-medium">{station.id}</td>
                                         <td className="px-6 py-4">{station.place}</td>
@@ -61,11 +61,11 @@ export default function PollingStationBlock() {
             </Card>
 
             {/* Evidence Panel */}
-            <Card className="bg-white text-[#2B3674] col-span-1 lg:col-span-2 relative overflow-hidden">
+            <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white col-span-1 lg:col-span-2 relative overflow-hidden shadow-sm border border-gray-100 dark:border-gray-800">
                 <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none text-[#4318FF]">
                     <FileText className="w-48 h-48" />
                 </div>
-                <CardHeader className="border-b border-gray-100">
+                <CardHeader className="border-b border-gray-100 dark:border-gray-800">
                     <CardTitle className="flex items-center gap-2">
                         <FileText className="w-5 h-5 text-[#4318FF]" />
                         Evidencia Digital - Mesa {selectedStation.id}
@@ -73,7 +73,7 @@ export default function PollingStationBlock() {
                 </CardHeader>
                 <CardContent className="space-y-6 pt-6">
                     {/* Mock Image Placeholder */}
-                    <div className="w-full h-48 bg-slate-100 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300 relative group">
+                    <div className="w-full h-48 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-700 relative group">
                         <img 
                             src="https://placehold.co/600x400/f1f5f9/334155?text=ACTA+E-14" 
                             alt="Acta Digitalizada" 
@@ -87,49 +87,49 @@ export default function PollingStationBlock() {
                     {/* Metadata Grid */}
                     <div className="grid grid-cols-1 gap-4 text-sm">
                         <div className="flex items-start gap-3">
-                            <div className="p-2 bg-[#F4F7FE] rounded text-[#4318FF] mt-1">
+                            <div className="p-2 bg-[#F4F7FE] dark:bg-gray-800 rounded text-[#4318FF] mt-1">
                                 <Hash className="w-4 h-4" />
                             </div>
                             <div className="flex-1 break-all">
-                                <p className="text-[#A3AED0] text-xs uppercase">Hash SHA-256 (Integridad)</p>
+                                <p className="text-[#A3AED0] dark:text-gray-400 text-xs uppercase">Hash SHA-256 (Integridad)</p>
                                 <p className="font-mono text-xs text-[#05CD99]">{selectedStation.evidence.hash}</p>
                             </div>
                         </div>
 
                         <div className="flex items-start gap-3">
-                            <div className="p-2 bg-[#F4F7FE] rounded text-[#4318FF] mt-1">
+                            <div className="p-2 bg-[#F4F7FE] dark:bg-gray-800 rounded text-[#4318FF] mt-1">
                                 <Key className="w-4 h-4" />
                             </div>
                             <div>
-                                <p className="text-[#A3AED0] text-xs uppercase">Firma Digital</p>
+                                <p className="text-[#A3AED0] dark:text-gray-400 text-xs uppercase">Firma Digital</p>
                                 <div className="flex items-center gap-2">
                                      {selectedStation.evidence.signature === 'VALID' ? (
                                          <Badge variant="success" className="bg-[#05CD99]/10 text-[#05CD99] border-none">VÁLIDA</Badge>
                                      ) : (
                                           <Badge variant="destructive">INVÁLIDA</Badge>
                                      )}
-                                     <span className="text-xs text-[#A3AED0]">Certificado: ROOT-CA-COL-2026</span>
+                                     <span className="text-xs text-[#A3AED0] dark:text-gray-400">Certificado: ROOT-CA-COL-2026</span>
                                 </div>
                             </div>
                         </div>
 
                          <div className="grid grid-cols-2 gap-4">
                             <div className="flex items-start gap-3">
-                                <div className="p-2 bg-[#F4F7FE] rounded text-[#FFB547] mt-1">
+                                <div className="p-2 bg-[#F4F7FE] dark:bg-gray-800 rounded text-[#FFB547] mt-1">
                                     <MapPin className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <p className="text-[#A3AED0] text-xs uppercase">Device ID</p>
-                                    <p className="font-mono text-[#2B3674]">{selectedStation.evidence.device}</p>
+                                    <p className="text-[#A3AED0] dark:text-gray-400 text-xs uppercase">Device ID</p>
+                                    <p className="font-mono text-[#2B3674] dark:text-white">{selectedStation.evidence.device}</p>
                                 </div>
                             </div>
                              <div className="flex items-start gap-3">
-                                <div className="p-2 bg-[#F4F7FE] rounded text-[#05CD99] mt-1">
+                                <div className="p-2 bg-[#F4F7FE] dark:bg-gray-800 rounded text-[#05CD99] mt-1">
                                     <CheckCircle className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <p className="text-[#A3AED0] text-xs uppercase">Tiempo Registro</p>
-                                    <p className="font-mono text-[#2B3674]">{selectedStation.evidence.time}</p>
+                                    <p className="text-[#A3AED0] dark:text-gray-400 text-xs uppercase">Tiempo Registro</p>
+                                    <p className="font-mono text-[#2B3674] dark:text-white">{selectedStation.evidence.time}</p>
                                 </div>
                             </div>
                          </div>

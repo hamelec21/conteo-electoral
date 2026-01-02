@@ -10,7 +10,7 @@ export default function AlertsRisk() {
     const { alerts } = ELECTION_DATA;
 
     return (
-        <Card className="bg-white text-[#2B3674] h-full">
+        <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white h-full shadow-sm border border-gray-100 dark:border-gray-800">
             <CardHeader>
                 <CardTitle>Alertas y Riesgos</CardTitle>
             </CardHeader>
@@ -37,8 +37,8 @@ export default function AlertsRisk() {
                          </PieChart>
                      </ResponsiveContainer>
                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -mt-4">
-                        <p className="text-2xl font-bold text-[#2B3674]">166</p>
-                        <p className="text-[10px] text-[#A3AED0]">Total</p>
+                        <p className="text-2xl font-bold text-[#2B3674] dark:text-white">166</p>
+                        <p className="text-[10px] text-[#A3AED0] dark:text-gray-400">Total</p>
                     </div>
                  </div>
 
@@ -48,15 +48,15 @@ export default function AlertsRisk() {
                     <div className="flex flex-col gap-2">
                         <div className="bg-red-500/10 border-l-4 border-red-500 rounded-r p-2 flex justify-between items-center">
                             <span className="text-red-500 text-xs font-bold uppercase">Altas</span>
-                            <span className="text-xl font-bold text-red-600">12</span>
+                            <span className="text-xl font-bold text-red-600 dark:text-red-500">12</span>
                         </div>
                         <div className="bg-yellow-500/10 border-l-4 border-yellow-500 rounded-r p-2 flex justify-between items-center">
                             <span className="text-yellow-500 text-xs font-bold uppercase">Medias</span>
-                            <span className="text-xl font-bold text-yellow-600">34</span>
+                            <span className="text-xl font-bold text-yellow-600 dark:text-yellow-500">34</span>
                         </div>
                         <div className="bg-green-500/10 border-l-4 border-green-500 rounded-r p-2 flex justify-between items-center">
                              <span className="text-green-500 text-xs font-bold uppercase">Bajas</span>
-                             <span className="text-xl font-bold text-green-600">120</span>
+                             <span className="text-xl font-bold text-green-600 dark:text-green-500">120</span>
                         </div>
                     </div>
 
@@ -64,15 +64,15 @@ export default function AlertsRisk() {
                     <div className="flex flex-col gap-2 justify-center">
                         <div className="flex items-center gap-2">
                              <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                             <p className="text-xs text-[#2B3674] font-medium leading-tight">Dif. Imagen/Dato</p>
+                             <p className="text-xs text-[#2B3674] dark:text-gray-300 font-medium leading-tight">Dif. Imagen/Dato</p>
                         </div>
                         <div className="flex items-center gap-2">
                              <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                             <p className="text-xs text-[#2B3674] font-medium leading-tight">Geo inconsistente</p>
+                             <p className="text-xs text-[#2B3674] dark:text-gray-300 font-medium leading-tight">Geo inconsistente</p>
                         </div>
                         <div className="flex items-center gap-2">
                              <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                             <p className="text-xs text-[#2B3674] font-medium leading-tight">Hora anómala</p>
+                             <p className="text-xs text-[#2B3674] dark:text-gray-300 font-medium leading-tight">Hora anómala</p>
                         </div>
                     </div>
                  </div>

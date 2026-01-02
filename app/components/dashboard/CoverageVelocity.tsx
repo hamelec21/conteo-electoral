@@ -20,7 +20,7 @@ export default function CoverageVelocity() {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Coverage Bars */}
-            <Card className="bg-white text-[#2B3674] col-span-1 lg:col-span-2">
+            <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white col-span-1 lg:col-span-2 shadow-sm border border-gray-100 dark:border-gray-800">
                 <CardHeader>
                     <CardTitle>Cobertura por Región</CardTitle>
                 </CardHeader>
@@ -67,12 +67,12 @@ export default function CoverageVelocity() {
             </Card>
 
             {/* Velocity Heatmap / Status */}
-            <Card className="bg-white text-[#2B3674]">
+            <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white shadow-sm border border-gray-100 dark:border-gray-800">
                 <CardHeader>
                     <CardTitle>Velocidad de Reporte</CardTitle>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-6">
-                    <div className="flex items-center gap-4 p-4 rounded-lg bg-[#F4F7FE] border-none">
+                    <div className="flex items-center gap-4 p-4 rounded-lg bg-[#F4F7FE] dark:bg-gray-800 border-none">
                         <div className="p-3 rounded-full bg-blue-500/20 text-blue-400">
                              <Clock className="w-6 h-6" />
                         </div>
@@ -83,10 +83,10 @@ export default function CoverageVelocity() {
                     </div>
 
                     <div className="space-y-3">
-                         <h4 className="text-sm font-semibold text-[#A3AED0]">Estado por Regiones</h4>
+                         <h4 className="text-sm font-semibold text-[#A3AED0] dark:text-gray-400">Estado por Regiones</h4>
                          {regions.map((region, idx) => (
                              <div key={idx} className="flex items-center justify-between text-sm">
-                                 <span className="text-[#2B3674] font-medium">{region.name}</span>
+                                 <span className="text-[#2B3674] dark:text-white font-medium">{region.name}</span>
                                  {region.status === 'rapid' && <Badge variant="success">Rápido 🚀</Badge>}
                                  {region.status === 'medium' && <Badge variant="warning">Normal ⏱️</Badge>}
                                  {region.status === 'slow' && <Badge variant="destructive">Lento ⚠️</Badge>}
