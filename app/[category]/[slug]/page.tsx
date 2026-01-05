@@ -11,6 +11,10 @@ import RegionCoverageChart from "../../components/dashboard/RegionCoverageChart"
 import DetailedResultsChart from "../../components/dashboard/DetailedResultsChart";
 import DocumentGallery from "../../components/dashboard/DocumentGallery";
 import CandidateEvolutionChart from "../../components/dashboard/CandidateEvolutionChart";
+import DeviceInventoryCharts from "../../components/dashboard/DeviceInventoryCharts";
+import ValidationDashboard from "../../components/dashboard/ValidationDashboard";
+import WitnessDatabase from "../../components/dashboard/WitnessDatabase";
+import LiveResultsDashboard from "../../components/dashboard/LiveResultsDashboard";
 
 export default function MenuPage({ params }: { params: Promise<{ category: string, slug: string }> }) {
     // ... existing code ...
@@ -25,7 +29,7 @@ export default function MenuPage({ params }: { params: Promise<{ category: strin
     const { slug } = resolvedParams;
     const content = PAGE_CONTENT[slug];
 
-    // Specific override for Electoral Map to use the real component
+    // Specific override for Electoral Map
     if (slug === 'mapa-electoral') {
         const ElectoralMap = dynamic(() => import("../../components/dashboard/ElectoralMap"), {
             ssr: false,
@@ -39,8 +43,17 @@ export default function MenuPage({ params }: { params: Promise<{ category: strin
                     <p className="text-[#A3AED0]">Mapa térmico de votación a nivel municipal.</p>
                 </div>
                 <Card className="bg-white p-1 overflow-hidden shadow-lg border-0">
-                    <ElectoralMap />
+                    <ElectoralMap height="600px" />
                 </Card>
+            </DashboardShell>
+        );
+    }
+
+    // Specific override for Live Results Dashboard (Transmisión en vivo)
+    if (slug === 'resultados') {
+        return (
+            <DashboardShell>
+                <LiveResultsDashboard />
             </DashboardShell>
         );
     }
@@ -115,15 +128,12 @@ export default function MenuPage({ params }: { params: Promise<{ category: strin
                         </CardContent>
                     </Card>
 
-                    {slug === 'cobertura-region' && (
-                        <RegionCoverageChart data={content.data} />
+                    {slug === 'dispositivos' && content.chartData && (
+                        <DeviceInventoryCharts data={content.chartData} />
                     )}
 
-                    {slug === 'resultados' && (
-                        <>
-                            <DetailedResultsChart data={content.data} />
-                            {content.evolutionData && <CandidateEvolutionChart data={content.evolutionData} />}
-                        </>
+                    {slug === 'cobertura-region' && (
+                        <RegionCoverageChart data={content.data} />
                     )}
                 </div>
             )}
@@ -150,6 +160,14 @@ export default function MenuPage({ params }: { params: Promise<{ category: strin
                         ))}
                     </div>
                 )
+            )}
+
+            {content.type === 'validation-dashboard' && content.data && (
+                <ValidationDashboard data={content.data} />
+            )}
+
+            {content.type === 'witness-database' && content.data && (
+                <WitnessDatabase data={content.data} />
             )}
 
             {content.type === 'stats' && content.data && (

@@ -27,7 +27,7 @@ export default function IntegrityTrust() {
     return (
         <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white h-full border border-gray-100 dark:border-gray-800 shadow-sm">
             <CardHeader>
-                <CardTitle>Integridad y Confianza</CardTitle>
+                <CardTitle className="text-xl font-black text-[#2B3674] tracking-tight">Integridad y Confianza</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-6">
                 
@@ -52,9 +52,9 @@ export default function IntegrityTrust() {
                             </Pie>
                         </PieChart>
                     </ResponsiveContainer>
-                    <div className="absolute bottom-8 text-center">
-                        <p className="text-3xl font-bold dark:text-white">{integrity.hashValid}%</p>
-                        <p className="text-xs text-[#A3AED0] dark:text-gray-400">Índice Global</p>
+                    <div className="absolute bottom-10 text-center">
+                        <p className="text-3xl font-black dark:text-white tracking-tighter">{integrity.hashValid}%</p>
+                        <p className="text-[10px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Índice Global</p>
                     </div>
                 </div>
 
@@ -63,30 +63,30 @@ export default function IntegrityTrust() {
                     <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
                         <div className="flex items-center gap-2 text-[#05CD99] mb-1">
                             <ShieldCheck className="w-4 h-4 flex-shrink-0" />
-                            <span className="text-xs font-bold text-[#A3AED0] dark:text-gray-400">Hash Válido</span>
+                            <span className="text-[9px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Hash Válido</span>
                         </div>
-                        <p className="text-lg font-bold dark:text-white">{integrity.hashValid}%</p>
+                        <p className="text-lg font-black dark:text-white tracking-tighter">{integrity.hashValid}%</p>
                     </div>
                     <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
                         <div className="flex items-center gap-2 text-[#4318FF] dark:text-[#7551FF] mb-1">
                             <Fingerprint className="w-4 h-4 flex-shrink-0" />
-                            <span className="text-xs font-bold text-[#A3AED0] dark:text-gray-400">Firma Digital</span>
+                            <span className="text-[9px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Firma Digital</span>
                         </div>
-                        <p className="text-lg font-bold dark:text-white">{integrity.signatureValid}%</p>
+                        <p className="text-lg font-black dark:text-white tracking-tighter">{integrity.signatureValid}%</p>
                     </div>
                      <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
                         <div className="flex items-center gap-2 text-[#FFB547] mb-1">
                             <Clock className="w-4 h-4 flex-shrink-0" />
-                            <span className="text-xs font-bold text-[#A3AED0] dark:text-gray-400">Sello Tiempo</span>
+                            <span className="text-[9px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Sello Tiempo</span>
                         </div>
-                        <p className="text-lg font-bold dark:text-white">{integrity.timestampValid}%</p>
+                        <p className="text-lg font-black dark:text-white tracking-tighter">{integrity.timestampValid}%</p>
                     </div>
                      <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
                         <div className="flex items-center gap-2 text-[#E5E7EB] dark:text-gray-500 mb-1">
                             <MapPin className="w-4 h-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />
-                            <span className="text-xs font-bold text-[#A3AED0] dark:text-gray-400">Geolocalización</span>
+                            <span className="text-[9px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Geolocalización</span>
                         </div>
-                         <p className="text-lg font-bold dark:text-white">{integrity.geoValid}%</p>
+                         <p className="text-lg font-black dark:text-white tracking-tighter">{integrity.geoValid}%</p>
                     </div>
                 </div>
             </CardContent>

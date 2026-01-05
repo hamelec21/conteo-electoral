@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui-blocks";
-import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LabelList } from "recharts";
 
 interface StatsItem {
     label: string;
@@ -132,6 +132,12 @@ export default function StatisticsChart({ data }: { data: StatsItem[] }) {
                                              entry.name.includes("Blanco") ? "url(#gradGray)" : "url(#gradRed)"
                                          } />
                                     ))}
+                                    <LabelList 
+                                        dataKey="value" 
+                                        position="right" 
+                                        formatter={(val: any) => `${val}%`}
+                                        style={{ fill: '#2B3674', fontSize: '10px', fontWeight: '900' }} 
+                                    />
                                 </Bar>
                             </BarChart>
                         </ResponsiveContainer>

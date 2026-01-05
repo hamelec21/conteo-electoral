@@ -11,6 +11,7 @@ import AlertsRisk from "./components/dashboard/AlertsRisk";
 import PollingStationBlock from "./components/dashboard/PollingStationBlock";
 import DashboardShell from "./components/dashboard/DashboardShell";
 
+
 const ElectoralMap = dynamic(() => import("./components/dashboard/ElectoralMap"), {
   ssr: false,
   loading: () => <div className="h-[500px] w-full bg-slate-900 animate-pulse rounded-xl" />
@@ -36,6 +37,7 @@ export default function Home() {
     <DashboardShell>
         {/* BLOCK 1: KPIs */}
         <section>
+         
           <KPICards />
         </section>
 
@@ -69,6 +71,7 @@ export default function Home() {
         <section>
             <PollingStationBlock />
         </section>
+
     </DashboardShell>
   );
 }

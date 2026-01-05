@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui-blocks";
-import { MapContainer, TileLayer, Polygon, Tooltip, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Polygon, Tooltip, useMap, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useTheme } from "@/app/contexts/ThemeContext";
+// import L from "leaflet"; 
 
 // Placeholder coordinates for a generic polygon representing a region (Stylized Colombia-ish shape or Region)
 // In a real app, this would be GeoJSON.
@@ -24,10 +24,10 @@ const REGION_COORDS: [number, number][][] = [
 ];
 
 const MOCK_REGIONS = [
-    { name: "Bogotá", color: "#2563EB", coords: REGION_COORDS[0], votes: 450000, leader: " Abelardo de la Espriella" },
-    { name: "Antioquia", color: "#DC2626", coords: REGION_COORDS[1], votes: 380000, leader: "Iván Cepeda" },
-    { name: "Valle", color: "#2563EB", coords: REGION_COORDS[2], votes: 210000, leader: " Abelardo de la Espriella" },
-    { name: "Atlántico", color: "#DC2626", coords: REGION_COORDS[3], votes: 150000, leader: "Iván Cepeda" }
+    { name: "Bogotá", color: "#4318FF", coords: REGION_COORDS[0], votes: 450000, leader: "Abelardo de la Espriella", center: [4.8, -74.25] },
+    { name: "Antioquia", color: "#E31A1C", coords: REGION_COORDS[1], votes: 380000, leader: "Iván Cepeda", center: [6.5, -75.5] },
+    { name: "Valle", color: "#4318FF", coords: REGION_COORDS[2], votes: 210000, leader: "Abelardo de la Espriella", center: [3.5, -76.7] },
+    { name: "Atlántico", color: "#E31A1C", coords: REGION_COORDS[3], votes: 150000, leader: "Iván Cepeda", center: [10.5, -74.5] }
 ];
 
 function MapController() {
@@ -38,10 +38,8 @@ function MapController() {
   return null;
 }
 
-export default function ElectoralMap() {
-    // We need to ensure window is defined (client-side only for Leaflet)
+export default function ElectoralMap({ height = "400px", showHeader = false }: { height?: string, showHeader?: boolean }) {
     const [isMounted, setIsMounted] = useState(false);
-    const { theme } = useTheme();
 
     useEffect(() => {
         setIsMounted(true);
@@ -49,56 +47,109 @@ export default function ElectoralMap() {
 
     if (!isMounted) {
         return (
-             <Card className="bg-[#111827] border-gray-800 text-white h-[500px] flex items-center justify-center">
-                <p>Cargando mapa...</p>
-             </Card>
+             <div className="bg-[#F4F7FE] border-gray-100 text-[#2B3674] flex items-center justify-center rounded-2xl" style={{ height }}>
+                <p className="text-[10px] font-black uppercase tracking-widest animate-pulse">Cargando mapa...</p>
+             </div>
         );
     }
 
-    return (
-        <Card className="bg-white dark:bg-gray-900 text-[#2B3674] dark:text-white h-full shadow-sm border border-gray-100 dark:border-gray-800">
-            <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>Mapa Electoral Interactivo</CardTitle>
-                <div className="flex gap-2 text-xs">
-                     <span className="flex items-center gap-1"><span className="w-3 h-3 bg-blue-600 rounded-full"></span>Abelardo de la Espriella</span>
-                     <span className="flex items-center gap-1"><span className="w-3 h-3 bg-red-600 rounded-full"></span> Iván Cepeda</span>
-                </div>
-            </CardHeader>
-            <CardContent className="p-0 h-[500px] relative z-0">
-                 <MapContainer 
-                    center={[4.0, -72.0]} 
-                    zoom={6} 
-                    scrollWheelZoom={false} 
-                    className="h-full w-full rounded-b-xl"
-                    style={{ background: theme === 'dark' ? '#111827' : '#EFF6FF' }}
-                    maxBounds={[[-5, -82], [13, -66]]}
-                    maxBoundsViscosity={1.0}
-                >
-                    <MapController />
-                     <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                        url={theme === 'dark' 
-                            ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" 
-                            : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-                        }
-                    />
-                    {MOCK_REGIONS.map((region, idx) => (
-                        <Polygon 
-                            key={idx} 
-                            positions={region.coords}
-                            pathOptions={{ color: region.color, fillColor: region.color, fillOpacity: 0.5, weight: 1 }}
-                        >
-                            <Tooltip sticky>
-                                <div className="text-slate-900 bg-white p-2 rounded shadow text-xs">
-                                    <strong>{region.name}</strong><br/>
-                                    Líder: {region.leader}<br/>
-                                    Votos: {region.votes.toLocaleString()}
-                                </div>
-                            </Tooltip>
-                        </Polygon>
-                    ))}
-                </MapContainer>
-            </CardContent>
-        </Card>
+    const MapContent = (
+        <div className="relative z-0 overflow-hidden rounded-2xl" style={{ height }}>
+             <MapContainer 
+                center={[4.5, -73.0]} 
+                zoom={6} 
+                scrollWheelZoom={false} 
+                className="h-full w-full"
+                style={{ background: '#F4F7FE' }}
+                maxBounds={[[-5, -85], [15, -65]]}
+                maxBoundsViscosity={1.0}
+            >
+                <MapController />
+                 <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+                />
+                {MOCK_REGIONS.map((region, idx) => {
+                    // @ts-ignore
+                    const L = typeof window !== 'undefined' ? window.L : null;
+                    const customIcon = L ? L.divIcon({
+                        className: 'custom-region-icon',
+                        html: `
+                          <div class="relative flex items-center justify-center">
+                            <div class="absolute w-8 h-8 rounded-full opacity-30 animate-ping" style="background-color: ${region.color}"></div>
+                            <div class="relative w-4 h-4 rounded-full border-2 border-white shadow-lg" style="background-color: ${region.color}"></div>
+                          </div>
+                        `,
+                        iconSize: [32, 32],
+                        iconAnchor: [16, 16]
+                    }) : null;
+
+                    return (
+                        <React.Fragment key={idx}>
+                            <Polygon 
+                                positions={region.coords}
+                                pathOptions={{ 
+                                    color: region.color, 
+                                    fillColor: region.color, 
+                                    fillOpacity: 0.1, 
+                                    weight: 1.5,
+                                    dashArray: '3, 6'
+                                }}
+                            />
+                            {customIcon && (
+                                <Marker position={region.center as any} icon={customIcon}>
+                                    <Tooltip sticky>
+                                        <div className="bg-white p-3 rounded-2xl shadow-xl border border-gray-100 min-w-[150px]">
+                                            <h4 className="text-[#2B3674] font-black text-[10px] uppercase tracking-widest mb-1">{region.name}</h4>
+                                            <div className="space-y-1">
+                                                <div className="flex justify-between items-center text-[9px]">
+                                                    <span className="text-[#A3AED0] font-black uppercase tracking-widest">Líder:</span>
+                                                    <span className="text-[#2B3674] font-black">{region.leader}</span>
+                                                </div>
+                                                <div className="flex justify-between items-center text-[9px]">
+                                                    <span className="text-[#A3AED0] font-black uppercase tracking-widest">Votos:</span>
+                                                    <span className="text-[#05CD99] font-black">{region.votes.toLocaleString()}</span>
+                                                </div>
+                                            </div>
+                                            <div className="mt-2 w-full h-1 bg-gray-100 rounded-full overflow-hidden">
+                                                <div className="h-full bg-[#4318FF]" style={{ width: '65%' }}></div>
+                                            </div>
+                                        </div>
+                                    </Tooltip>
+                                </Marker>
+                            )}
+                        </React.Fragment>
+                    );
+                })}
+            </MapContainer>
+        </div>
     );
+
+    if (showHeader) {
+        return (
+            <Card className="bg-white border-0 shadow-lg rounded-3xl overflow-hidden">
+                <CardHeader className="p-8 pb-4 flex flex-row items-center justify-between border-b border-gray-50">
+                    <div>
+                        <CardTitle className="text-xl font-black text-[#2B3674] tracking-tight">Mapa Electoral Interactivo</CardTitle>
+                        <p className="text-[10px] font-black text-[#A3AED0] uppercase tracking-widest mt-1">Simulación de Tendencias Geográficas</p>
+                    </div>
+                    <div className="flex gap-4">
+                         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50/50 border border-blue-100/50">
+                            <span className="w-2.5 h-2.5 bg-[#4318FF] rounded-full shadow-[0_0_8px_rgba(67,24,255,0.4)]"></span>
+                            <span className="text-[10px] font-black text-[#2B3674] uppercase tracking-tight">De la Espriella</span>
+                         </div>
+                         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50/50 border border-red-100/50">
+                            <span className="w-2.5 h-2.5 bg-[#E31A1C] rounded-full shadow-[0_0_8px_rgba(227,26,28,0.4)]"></span>
+                            <span className="text-[10px] font-black text-[#2B3674] uppercase tracking-tight">Iván Cepeda</span>
+                         </div>
+                    </div>
+                </CardHeader>
+                <CardContent className="p-0">
+                    {MapContent}
+                </CardContent>
+            </Card>
+        );
+    }
+
+    return MapContent;
 }
