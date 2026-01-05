@@ -29,6 +29,16 @@ export default function MenuPage({ params }: { params: Promise<{ category: strin
     const { slug } = resolvedParams;
     const content = PAGE_CONTENT[slug];
 
+    const [trendFilter, setTrendFilter] = React.useState("Todas");
+
+    // Dynamic data filtering for specific slugs
+    let displayData = content?.data || [];
+    if (slug === 'cobertura-region' && trendFilter !== "Todas") {
+        displayData = displayData.filter((row: any) => 
+            row.tendencia.toLowerCase().startsWith(trendFilter.toLowerCase())
+        );
+    }
+
     // Specific override for Electoral Map
     if (slug === 'mapa-electoral') {
         const ElectoralMap = dynamic(() => import("../../components/dashboard/ElectoralMap"), {
@@ -96,8 +106,30 @@ export default function MenuPage({ params }: { params: Promise<{ category: strin
             </div>
 
             {/* Content Renderer */}
-            {content.type === 'table' && content.data && (
+            {content.type === 'table' && displayData && (
                 <div className="space-y-6">
+                    {slug === 'cobertura-region' && (
+                        <div className="flex items-center gap-4 mb-2 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                            <div className="flex items-center gap-2">
+                                <span className="text-xs font-black uppercase tracking-widest text-[#A3AED0]">Filtrar por Tendencia:</span>
+                                <select 
+                                    value={trendFilter}
+                                    onChange={(e) => setTrendFilter(e.target.value)}
+                                    className="bg-[#F4F7FE] text-[#2B3674] text-xs font-bold py-2 px-4 rounded-full border-none focus:ring-2 focus:ring-[#4318FF] transition-all outline-none cursor-pointer"
+                                >
+                                    <option value="Todas">Todas las tendencias</option>
+                                    <option value="Alta">Tendencia Alta</option>
+                                    <option value="Media">Tendencia Media</option>
+                                    <option value="Baja">Tendencia Baja</option>
+                                    <option value="Muy baja">Tendencia Muy Baja</option>
+                                </select>
+                            </div>
+                            <div className="ml-auto flex items-center gap-2">
+                                <span className="text-xs font-medium text-[#A3AED0]">Mostrando {displayData.length} de {content.data.length} regiones</span>
+                            </div>
+                        </div>
+                    )}
+
                     <Card className="bg-white text-[#2B3674] border-none shadow-sm">
                         <CardHeader>
                             <CardTitle className="text-lg font-bold text-[#2B3674]">Detalle de Registros</CardTitle>
@@ -113,7 +145,7 @@ export default function MenuPage({ params }: { params: Promise<{ category: strin
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-50">
-                                        {content.data.map((row: any, rIdx: number) => (
+                                        {displayData.map((row: any, rIdx: number) => (
                                             <tr key={rIdx} className="hover:bg-blue-50/30 transition-colors">
                                                 {Object.values(row).map((val: any, cIdx: number) => (
                                                     <td key={cIdx} className="px-6 py-4 whitespace-nowrap">
@@ -133,7 +165,7 @@ export default function MenuPage({ params }: { params: Promise<{ category: strin
                     )}
 
                     {slug === 'cobertura-region' && (
-                        <RegionCoverageChart data={content.data} />
+                        <RegionCoverageChart data={displayData} />
                     )}
                 </div>
             )}
