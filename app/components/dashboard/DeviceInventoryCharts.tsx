@@ -76,11 +76,12 @@ const GaugeChart = ({ value, label, subLabel, metrics }: { value: number; label:
                             innerRadius={60}
                             outerRadius={80}
                             paddingAngle={0}
+                            cornerRadius={10}
                             dataKey="value"
                             stroke="none"
                         >
                             {data.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={entry.color} cornerRadius={index === 0 ? 10 : 0} />
+                                <Cell key={`cell-${index}`} fill={entry.color} />
                             ))}
                         </Pie>
                     </PieChart>
