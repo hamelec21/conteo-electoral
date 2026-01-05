@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Bell, Settings, Calendar, Menu, Moon, Sun } from "lucide-react";
+import Link from "next/link";
 import { useTheme } from "@/app/contexts/ThemeContext";
 
 export default function Header({ onMenuToggle }: { onMenuToggle?: () => void }) {
@@ -34,15 +35,21 @@ export default function Header({ onMenuToggle }: { onMenuToggle?: () => void }) 
 
                 {/* Center: Navigation Tabs (Hidden on mobile) */}
                 <div className="hidden lg:flex items-center gap-2 bg-[#F4F7FE] dark:bg-gray-800 rounded-full p-1">
-                    <button className="px-6 py-2 bg-[#4318FF] text-white rounded-full text-sm font-semibold shadow-md transition-all">
-                        Dashboard
-                    </button>
-                    <button className="px-6 py-2 text-[#A3AED0] dark:text-gray-400 hover:text-[#2B3674] dark:hover:text-white rounded-full text-sm font-medium transition-all">
-                        Reportes
-                    </button>
-                    <button className="px-6 py-2 text-[#A3AED0] dark:text-gray-400 hover:text-[#2B3674] dark:hover:text-white rounded-full text-sm font-medium transition-all">
-                        Monitoreo
-                    </button>
+                    <Link href="/">
+                        <button className="px-6 py-2 bg-[#4318FF] text-white rounded-full text-sm font-semibold shadow-md transition-all">
+                            Dashboard
+                        </button>
+                    </Link>
+                    <Link href="/general/reportes">
+                        <button className="px-6 py-2 text-[#A3AED0] dark:text-gray-400 hover:text-[#2B3674] dark:hover:text-white rounded-full text-sm font-medium transition-all">
+                            Reportes
+                        </button>
+                    </Link>
+                    <Link href="/gestion/resultados">
+                        <button className="px-6 py-2 text-[#A3AED0] dark:text-gray-400 hover:text-[#2B3674] dark:hover:text-white rounded-full text-sm font-medium transition-all">
+                            Monitoreo
+                        </button>
+                    </Link>
                 </div>
 
                 {/* Right: Date, Theme, Notifications, Settings */}

@@ -50,12 +50,12 @@ export default function KPICards() {
                              <div className={`p-2 rounded-full ${card.featured ? 'bg-white/20' : 'bg-[#F4F7FE] dark:bg-gray-800'}`}>
                                 {card.icon}
                              </div>
-                             {!card.featured && <p className="text-[#A3AED0] dark:text-gray-400 text-sm font-medium">{card.label}</p>}
-                             {card.featured && <p className="text-gray-100 text-sm font-medium">{card.label}</p>}
+                             {!card.featured && <p className="text-[#A3AED0] dark:text-gray-400 text-[10px] font-black uppercase tracking-widest">{card.label}</p>}
+                             {card.featured && <p className="text-gray-100 text-[10px] font-black uppercase tracking-widest">{card.label}</p>}
                         </div>
                         <div>
-                            <p className="text-2xl font-bold tracking-tight">{card.value}</p>
-                            <p className={`text-xs mt-1 ${card.featured ? 'text-gray-200' : 'text-[#A3AED0] dark:text-gray-400'}`}>{card.sub}</p>
+                            <p className="text-2xl font-black tracking-tighter">{card.value}</p>
+                            <p className={`text-[10px] font-black uppercase tracking-widest mt-1 ${card.featured ? 'text-gray-200' : 'text-[#A3AED0] dark:text-gray-400'}`}>{card.sub}</p>
                         </div>
                     </CardContent>
                 </Card>

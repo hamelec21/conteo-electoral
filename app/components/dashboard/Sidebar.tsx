@@ -13,17 +13,19 @@ import {
 
 const MENU_ITEMS = [
     { name: "Dashboard", slug: "", icon: Home },
-    { name: "Control Permisos", slug: "administracion/control-permisos", icon: Shield },
-    { name: "Dispositivos", slug: "administracion/dispositivos", icon: Smartphone },
-    { name: "Gestión Usuarios", slug: "administracion/gestion-usuarios", icon: Users },
-    { name: "Actas Escaneadas", slug: "gestion/actas-escaneadas", icon: FileText },
-    { name: "Cobertura Región", slug: "gestion/cobertura-region", icon: Map },
-    { name: "Estadísticas", slug: "gestion/estadisticas", icon: BarChart },
-    { name: "Mapa Electoral", slug: "gestion/mapa-electoral", icon: Globe },
-    { name: "Resultados", slug: "gestion/resultados", icon: PieChart },
+   
     { name: "Validación Datos", slug: "gestion/validacion-datos", icon: CheckCircle },
+     { name: "Transmisión en vivo", slug: "gestion/resultados", icon: PieChart },
+  { name: "Estadísticas", slug: "gestion/estadisticas", icon: BarChart },
+    { name: "Cobertura Región", slug: "gestion/cobertura-region", icon: Map },
+    { name: "Mapa Electoral", slug: "gestion/mapa-electoral", icon: Globe },
+    { name: "Actas Escaneadas", slug: "gestion/actas-escaneadas", icon: FileText },
     { name: "Cobertura", slug: "monitoreo/cobertura", icon: Signal },
-    { name: "Documentación", slug: "general/documentacion", icon: Book },
+     { name: "Testigos", slug: "gestion/testigos", icon: Users },
+      { name: "Gestión Usuarios", slug: "administracion/gestion-usuarios", icon: Users },
+     { name: "Dispositivos", slug: "administracion/dispositivos", icon: Smartphone },
+     { name: "Control Permisos", slug: "administracion/control-permisos", icon: Shield },
+      { name: "Documentación", slug: "general/documentacion", icon: Book },
     { name: "Reportes", slug: "general/reportes", icon: FileText },
     { name: "Soporte", slug: "general/soporte", icon: LifeBuoy },
 ];

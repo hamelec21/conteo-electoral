@@ -21,7 +21,7 @@ export const ELECTION_DATA = {
             color: "#4318FF", 
             percent: 35,
             profession: "Abogado",
-            photo: "https://i.pravatar.cc/150?u=a" 
+            photo: "/images/candidatos/Abelardo_de _la_Espriella.png" 
         },
         { 
             name: "Iván Cepeda", 
@@ -29,7 +29,7 @@ export const ELECTION_DATA = {
             color: "#E31A1C", 
             percent: 29,
             profession: "Senador de Colombia",
-            photo: "https://i.pravatar.cc/150?u=b" 
+            photo: "/images/candidatos/Ivan_cepeda.png" 
         },
         { 
             name: "Paloma Valencia", 
@@ -37,7 +37,7 @@ export const ELECTION_DATA = {
             color: "#2563EB", 
             percent: 16,
             profession: "Senadora de la República",
-            photo: "https://i.pravatar.cc/150?u=c" 
+            photo: "/images/candidatos/paloma_valencia.png" 
         },
         { 
             name: "Sergio Fajardo", 
@@ -45,7 +45,7 @@ export const ELECTION_DATA = {
             color: "#10B981", 
             percent: 11,
             profession: "Matemático y ex Gobernador",
-            photo: "https://i.pravatar.cc/150?u=d" 
+            photo: "/images/candidatos/sergio_fajardo.png" 
         },
         { 
             name: "Juan Carlos Pinzón", 
@@ -53,7 +53,7 @@ export const ELECTION_DATA = {
             color: "#F59E0B", 
             percent: 6,
             profession: "Candidato",
-            photo: "https://i.pravatar.cc/150?u=e" 
+            photo: "/images/candidatos/juan_carlos_pinzon.png" 
         }
     ],
     timeSeries: [
