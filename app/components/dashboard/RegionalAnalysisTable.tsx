@@ -12,54 +12,140 @@ import {
 
 const HIERARCHY_DATA: any = {
     "root": [
-        { id: "antioquia", name: "ANTIOQUIA", type: "dept", winner: { name: "ABELARDO DE LA E.", pct: "45.15%", profit: "885,000" }, second: { name: "IVAN CEPEDA", pct: "35.15%", profit: "685,000" } },
-        { id: "santander", name: "SANTANDER", type: "dept", winner: { name: "IVAN CEPEDA", pct: "38.15%", profit: "485,000" }, second: { name: "ABELARDO DE LA E.", pct: "32.15%", profit: "425,000" } },
-        { id: "boyaca", name: "BOYACÁ", type: "dept", winner: { name: "IVAN CEPEDA", pct: "41.20%", profit: "215,000" }, second: { name: "ABELARDO DE LA E.", pct: "28.15%", profit: "155,000" } },
-        { id: "valle", name: "VALLE DEL CAUCA", type: "dept", winner: { name: "ABELARDO DE LA E.", pct: "42.15%", profit: "715,000" }, second: { name: "IVAN CEPEDA", pct: "39.15%", profit: "695,000" } }
+        { 
+            id: "antioquia", name: "ANTIOQUIA", type: "dept", 
+            results: [
+                { id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000", color: "#4318FF" },
+                { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000", color: "#E31A1C" },
+                { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000", color: "#00BAAD" },
+                { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
+                { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
+            ]
+        },
+        { 
+            id: "santander", name: "SANTANDER", type: "dept", 
+            results: [
+                { id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000", color: "#4318FF" },
+                { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000", color: "#E31A1C" },
+                { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000", color: "#00BAAD" },
+                { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
+                { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
+            ]
+        },
+        { 
+            id: "boyaca", name: "BOYACÁ", type: "dept", 
+            results: [
+                { id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000", color: "#4318FF" },
+                { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000", color: "#E31A1C" },
+                { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000", color: "#00BAAD" },
+                { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
+                { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
+            ]
+        },
+        { 
+            id: "valle", name: "VALLE DEL CAUCA", type: "dept", 
+            results: [
+                { id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000", color: "#4318FF" },
+                { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000", color: "#E31A1C" },
+                { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000", color: "#00BAAD" },
+                { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
+                { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
+            ]
+        }
     ],
     "santander": [
-        { id: "bucaramanga", name: "BUCARAMANGA", type: "mun", winner: { name: "IVAN CEPEDA", pct: "42.1%", profit: "120,000" }, second: { name: "ABELARDO DE LA E.", pct: "38.5%", profit: "110,000" } },
-        { id: "floridablanca", name: "FLORIDABLANCA", type: "mun", winner: { name: "IVAN CEPEDA", pct: "39.2%", profit: "45,000" }, second: { name: "ABELARDO DE LA E.", pct: "35.1%", profit: "40,000" } },
-        { id: "giron", name: "GIRÓN", type: "mun", winner: { name: "IVAN CEPEDA", pct: "33.5%", profit: "25,000" }, second: { name: "ABELARDO DE LA E.", pct: "32.1%", profit: "24,000" } },
-        { id: "barrancabermeja", name: "BARRANCABERMEJA", type: "mun", winner: { name: "IVAN CEPEDA", pct: "51.0%", profit: "65,000" }, second: { name: "ABELARDO DE LA E.", pct: "25.5%", profit: "32,000" } }
+        { 
+            id: "bucaramanga", name: "BUCARAMANGA", type: "mun", 
+            results: [
+                { id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000", color: "#4318FF" },
+                { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000", color: "#E31A1C" },
+                { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000", color: "#00BAAD" },
+                { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
+                { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
+            ]
+        },
+        { id: "floridablanca", name: "FLORIDABLANCA", type: "mun", results: [{ id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000" }, { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000" }, { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000" }, { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000" }, { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000" }] },
+        { id: "giron", name: "GIRÓN", type: "mun", results: [{ id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000" }, { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000" }, { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000" }, { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000" }, { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000" }] },
+        { id: "barrancabermeja", name: "BARRANCABERMEJA", type: "mun", results: [{ id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000" }, { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000" }, { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000" }, { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000" }, { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000" }] }
     ],
     "bucaramanga": [
-        { id: "zona01_buc", name: "ZONA 01", type: "zone", winner: { name: "IVAN CEPEDA", pct: "45.2%", profit: "15,000" }, second: { name: "ABELARDO DE LA E.", pct: "30.1%", profit: "10,000" } },
-        { id: "zona02_buc", name: "ZONA 02", type: "zone", winner: { name: "IVAN CEPEDA", pct: "38.5%", profit: "12,000" }, second: { name: "ABELARDO DE LA E.", pct: "35.1%", profit: "11,000" } }
+        { 
+            id: "zona01_buc", name: "ZONA 01", type: "zone", 
+            results: [
+                { id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000", color: "#4318FF" },
+                { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000", color: "#E31A1C" },
+                { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000", color: "#00BAAD" },
+                { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
+                { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
+            ]
+        },
+        { id: "zona02_buc", name: "ZONA 02", type: "zone", results: [{ id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000" }, { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000" }, { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000" }, { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000" }, { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000" }] }
     ],
     "zona01_buc": [
-        { id: "puesto01_z1_buc", name: "COL. SANTANDER", type: "post", winner: { name: "IVAN CEPEDA", pct: "48.2%", profit: "2,000" }, second: { name: "ABELARDO DE LA E.", pct: "25.1%", profit: "1,100" } },
-        { id: "puesto02_z1_buc", name: "ESC. NORMAL", type: "post", winner: { name: "IVAN CEPEDA", pct: "41.5%", profit: "1,800" }, second: { name: "ABELARDO DE LA E.", pct: "32.1%", profit: "1,400" } }
+        { 
+            id: "puesto01_z1_buc", name: "COL. SANTANDER", type: "post", 
+            results: [
+                { id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000", color: "#4318FF" },
+                { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000", color: "#E31A1C" },
+                { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000", color: "#00BAAD" },
+                { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
+                { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
+            ]
+        }
     ],
     "puesto01_z1_buc": [
-        { id: "mesa01_p1_buc", name: "MESA 01", type: "table", winner: { name: "IVAN CEPEDA", pct: "50.0%", profit: "150" }, second: { name: "ABELARDO DE LA E.", pct: "20.0%", profit: "60" }, status: "Validada", alerts: "Sin alertas" },
-        { id: "mesa02_p1_buc", name: "MESA 02", type: "table", winner: { name: "IVAN CEPEDA", pct: "45.0%", profit: "135" }, second: { name: "ABELARDO DE LA E.", pct: "35.0%", profit: "105" }, status: "Riesgo Medio", alerts: "Incidencia" }
+        { 
+            id: "mesa01_p1_buc", name: "MESA 01", type: "table", status: "Validada", alerts: "Sin alertas",
+            results: [
+                { id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000", color: "#4318FF" },
+                { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000", color: "#E31A1C" },
+                { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000", color: "#00BAAD" },
+                { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
+                { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
+            ]
+        },
+        { 
+            id: "mesa02_p1_buc", name: "MESA 02", type: "table", status: "Riesgo Medio", alerts: "Incidencia detectada",
+            results: [
+                { id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000", color: "#4318FF" },
+                { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000", color: "#E31A1C" },
+                { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000", color: "#00BAAD" },
+                { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
+                { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
+            ]
+        }
     ],
     "antioquia": [
-        { id: "medellin", name: "MEDELLÍN", type: "mun", winner: { name: "ABELARDO DE LA E.", pct: "48.5%", profit: "420,000" }, second: { name: "IVAN CEPEDA", pct: "32.1%", profit: "280,000" } },
-        { id: "envigado", name: "ENVIGADO", type: "mun", winner: { name: "ABELARDO DE LA E.", pct: "55.2%", profit: "55,000" }, second: { name: "IVAN CEPEDA", pct: "25.1%", profit: "25,000" } }
+        { id: "medellin", name: "MEDELLÍN", type: "mun", results: [{ id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000" }, { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000" }, { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000" }, { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000" }, { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000" }] },
+        { id: "envigado", name: "ENVIGADO", type: "mun", results: [{ id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000" }, { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000" }, { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000" }, { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000" }, { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000" }] }
     ],
     "medellin": [
-        { id: "zona01_med", name: "ZONA 12 (POBLADO)", type: "zone", winner: { name: "ABELARDO DE LA E.", pct: "65.2%", profit: "45,000" }, second: { name: "IVAN CEPEDA", pct: "15.1%", profit: "10,000" } },
-        { id: "zona02_med", name: "ZONA 05 (LAURELES)", type: "zone", winner: { name: "ABELARDO DE LA E.", pct: "58.5%", profit: "32,000" }, second: { name: "IVAN CEPEDA", pct: "25.1%", profit: "14,000" } }
-    ],
-    "zona01_med": [
-        { id: "puesto01_z1_med", name: "COL. SAN JOSÉ", type: "post", winner: { name: "ABELARDO DE LA E.", pct: "68.2%", profit: "5,000" }, second: { name: "IVAN CEPEDA", pct: "12.1%", profit: "900" } }
-    ],
-    "puesto01_z1_med": [
-        { id: "mesa01_p1_med", name: "MESA 01", type: "table", winner: { name: "ABELARDO DE LA E.", pct: "75.0%", profit: "225" }, second: { name: "IVAN CEPEDA", pct: "10.0%", profit: "30" }, status: "Validada", alerts: "Sin alertas" }
+        { id: "zona12_med", name: "ZONA 12 (POBLADO)", type: "zone", results: [{ id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000" }, { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000" }, { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000" }, { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000" }, { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000" }] }
     ]
 };
 
 // --- Sub-Components ---
 
-const CandidateCell = ({ data }: { data: any }) => (
-    <div className="flex flex-col py-1">
-        <span className="text-[11px] font-black text-[#2B3674] tracking-tight">{data.name}</span>
-        <div className="flex items-center gap-2 mt-0.5">
-            <span className="text-[10px] font-bold text-[#707EAE]">{data.pct}</span>
-            <span className="text-[9px] font-black text-[#05CD99] bg-[#05CD99]/10 px-2.5 py-0.5 rounded-full uppercase tracking-widest">Votos: {data.profit}</span>
-        </div>
+const CandidateResultsHeader = () => (
+    <div className="grid grid-cols-5 gap-4">
+        {["ABELARDO", "IVÁN C.", "PALOMA", "SERGIO F.", "OTROS"].map((name, i) => (
+            <div key={i} className="text-center">
+                <p className="text-[8px] font-black opacity-60 truncate">{name}</p>
+            </div>
+        ))}
+    </div>
+);
+
+const CandidateResultsRow = ({ results }: { results: any[] }) => (
+    <div className="grid grid-cols-5 gap-2 lg:gap-4 h-full items-center">
+        {results?.slice(0, 5).map((can, i) => (
+            <div key={i} className="flex flex-col items-center">
+                <span className="text-[10px] font-black text-[#2B3674]">{can.pct}</span>
+                <span className="text-[8px] font-bold text-[#A3AED0] uppercase truncate">Votos: {can.profit}</span>
+            </div>
+        )) || (
+            <div className="col-span-5 text-center text-[8px] text-[#A3AED0] uppercase font-black">Sin datos</div>
+        )}
     </div>
 );
 
@@ -115,6 +201,22 @@ const MesaDetailContent = ({ item }: { item: any }) => {
                                 <p className="text-[9px] font-medium text-[#707EAE]">El acta ha sido procesada por OCR y validada por 2 auditores humanos sin discrepancias.</p>
                             </div>
                         </div>
+
+                        {/* Alerts & Risks Section */}
+                        <div className="bg-[#FFF4F4] p-6 rounded-3xl border border-red-50 space-y-3">
+                            <h4 className="text-[10px] font-black text-red-500 uppercase tracking-widest flex items-center gap-2">
+                                <AlertTriangle size={14} /> Alertas de Mesa
+                            </h4>
+                            <p className="text-xs font-black text-[#2B3674]">{item.alerts || "Sin alertas registradas"}</p>
+                            <div className="flex items-center gap-2">
+                                <span className={`px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest ${
+                                    item.status === 'Validada' ? 'bg-[#05CD99]/10 text-[#05CD99]' : 'bg-orange-100 text-orange-600'
+                                }`}>
+                                    Status: {item.status}
+                                </span>
+                            </div>
+                        </div>
+
                         <button className="w-full bg-[#4318FF] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-blue-100 hover:bg-[#3311CC] transition-all">
                             Descargar Acta Original
                         </button>
@@ -167,10 +269,34 @@ const MesaDetailContent = ({ item }: { item: any }) => {
     );
 };
 
-const AccordionRow = ({ item, level, isExpanded, onToggle }: { item: any, level: number, isExpanded: boolean, onToggle: () => void }) => {
+const AccordionRow = ({ item, level, isExpanded, onToggle, filterStatus }: { item: any, level: number, isExpanded: boolean, onToggle: () => void, filterStatus: string }) => {
     const children = HIERARCHY_DATA[item.id] || [];
-    const hasChildren = children.length > 0 || item.type === 'post'; // Post might have Mesas but in mock data it's separate
     
+    // Recursive visibility check for parents
+    const hasVisibleChildren = () => {
+        if (filterStatus === 'all') return true;
+        if (item.type === 'table') {
+            if (filterStatus === 'valid') return item.status === 'Validada';
+            if (filterStatus === 'alert') return item.status === 'Riesgo Medio' || item.status === 'Riesgo Alto' || item.alerts !== 'Sin alertas';
+            return true;
+        }
+
+        const checkChildren = (nodeId: string): boolean => {
+            const nodeChildren = HIERARCHY_DATA[nodeId] || [];
+            return nodeChildren.some((child: any) => {
+                if (child.type === 'table') {
+                    if (filterStatus === 'valid') return child.status === 'Validada';
+                    if (filterStatus === 'alert') return child.status !== 'Validada';
+                    return true;
+                }
+                return checkChildren(child.id);
+            });
+        };
+        return checkChildren(item.id);
+    };
+
+    if (!hasVisibleChildren()) return null;
+
     const getIcon = () => {
         switch (item.type) {
             case 'dept': return <MapPin size={14} className="text-[#4318FF]" />;
@@ -188,7 +314,7 @@ const AccordionRow = ({ item, level, isExpanded, onToggle }: { item: any, level:
                 className={`transition-all group cursor-pointer ${isExpanded ? 'bg-[#F4F7FE]/50' : 'hover:bg-[#F4F7FE]/20'}`}
                 onClick={onToggle}
             >
-                <td className="px-8 py-4" style={{ paddingLeft: `${level * 24 + 32}px` }}>
+                <td className="px-8 py-5" style={{ paddingLeft: `${level * 24 + 32}px` }}>
                     <div className="flex items-center gap-3">
                         {item.type !== 'table' && (
                             <div className={`transition-transform duration-300 ${isExpanded ? 'rotate-90' : ''}`}>
@@ -203,13 +329,10 @@ const AccordionRow = ({ item, level, isExpanded, onToggle }: { item: any, level:
                         </div>
                     </div>
                 </td>
-                <td className="px-5 py-4">
-                    <CandidateCell data={item.winner} />
+                <td colSpan={2} className="px-5 py-5">
+                    <CandidateResultsRow results={item.results} />
                 </td>
-                <td className="px-5 py-4">
-                    <CandidateCell data={item.second} />
-                </td>
-                <td className="px-5 py-4 text-center">
+                <td className="px-8 py-5 text-center">
                     <div className="flex items-center justify-center gap-1 h-6">
                         {[30, 60, 40, 80].map((h, i) => (
                             <div key={i} className={`w-1 rounded-full ${isExpanded ? 'bg-[#4318FF]' : 'bg-[#A3AED0] opacity-30'} transition-all`} style={{ height: `${h}%` }} />
@@ -231,7 +354,7 @@ const AccordionRow = ({ item, level, isExpanded, onToggle }: { item: any, level:
                                 <table className="w-full">
                                     <tbody>
                                         {children.length > 0 ? children.map((child: any) => (
-                                            <NestedRows key={child.id} item={child} level={level + 1} />
+                                            <NestedRows key={child.id} item={child} level={level + 1} filterStatus={filterStatus} />
                                         )) : (
                                             <tr>
                                                 <td className="px-8 py-10 text-center" style={{ paddingLeft: `${(level + 1) * 24 + 32}px` }}>
@@ -252,30 +375,57 @@ const AccordionRow = ({ item, level, isExpanded, onToggle }: { item: any, level:
     );
 };
 
-const NestedRows = ({ item, level }: { item: any, level: number }) => {
+const NestedRows = ({ item, level, filterStatus }: { item: any, level: number, filterStatus: string }) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    return <AccordionRow item={item} level={level} isExpanded={isExpanded} onToggle={() => setIsExpanded(!isExpanded)} />;
+    return <AccordionRow item={item} level={level} isExpanded={isExpanded} onToggle={() => setIsExpanded(!isExpanded)} filterStatus={filterStatus} />;
 };
 
 import GeographicConfidenceAnalysis from "./GeographicConfidenceAnalysis";
 
 export default function RegionalAnalysisTable() {
+    const [filterStatus, setFilterStatus] = useState<'all' | 'valid' | 'alert'>('all');
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <Card className="lg:col-span-3 border-0 shadow-lg rounded-3xl bg-white overflow-hidden flex flex-col">
-                <CardHeader className="p-8 border-b border-gray-50 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-                    <div>
+                <CardHeader className="p-8 border-b border-gray-50 flex flex-col xl:flex-row xl:items-center justify-between gap-6">
+                    <div className="flex flex-col gap-1">
                         <CardTitle className="text-xl font-black text-[#2B3674] tracking-tight">Análisis Jerárquico de Resultados</CardTitle>
                         <p className="text-xs font-bold text-[#A3AED0] uppercase tracking-widest mt-1">Exploración multinivel por expansión</p>
                     </div>
-                    <div className="flex items-center gap-4">
-                        <div className="flex items-center bg-[#F4F7FE] rounded-full px-4 py-2 border border-gray-100">
-                            <Search className="w-4 h-4 text-[#2B3674] mr-2" />
-                            <input type="text" placeholder="Filtrar por nombre..." className="bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-[#2B3674] focus:ring-0 placeholder-[#A3AED0] w-24 sm:w-32" />
+                    
+                    <div className="flex flex-wrap items-center gap-4">
+                        {/* Status Filters */}
+                        <div className="flex bg-[#F4F7FE] p-1 rounded-2xl border border-gray-100">
+                            {[
+                                { id: 'all', label: 'Todos', color: '#4318FF' },
+                                { id: 'valid', label: 'Válidos', color: '#05CD99' },
+                                { id: 'alert', label: 'Con Alertas', color: '#E31A1C' }
+                            ].map((f) => (
+                                <button
+                                    key={f.id}
+                                    onClick={() => setFilterStatus(f.id as any)}
+                                    className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${
+                                        filterStatus === f.id 
+                                            ? 'bg-white text-[#2B3674] shadow-sm' 
+                                            : 'text-[#A3AED0] hover:text-[#2B3674]'
+                                    }`}
+                                >
+                                    {filterStatus === f.id && <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: f.color }} />}
+                                    {f.label}
+                                </button>
+                            ))}
                         </div>
-                        <button className="p-3 bg-white border border-gray-100 rounded-full shadow-sm hover:bg-gray-50 transition-colors">
-                            <Filter className="w-4 h-4 text-[#2B3674]" />
-                        </button>
+
+                        <div className="flex items-center gap-2">
+                            <div className="flex items-center bg-[#F4F7FE] rounded-full px-4 py-2 border border-gray-100">
+                                <Search className="w-4 h-4 text-[#2B3674] mr-2" />
+                                <input type="text" placeholder="Buscar..." className="bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-[#2B3674] focus:ring-0 placeholder-[#A3AED0] w-24" />
+                            </div>
+                            <button className="p-3 bg-white border border-gray-100 rounded-full shadow-sm hover:bg-gray-50 transition-colors">
+                                <Filter className="w-4 h-4 text-[#2B3674]" />
+                            </button>
+                        </div>
                     </div>
                 </CardHeader>
 
@@ -314,15 +464,16 @@ export default function RegionalAnalysisTable() {
                         <table className="w-full text-left border-separate border-spacing-0">
                             <thead className="bg-[#F4F7FE]/30 text-[10px] uppercase font-black text-[#A3AED0] tracking-[0.15em] sticky top-0 z-10 backdrop-blur-md">
                                 <tr>
-                                    <th className="px-8 py-4 border-b border-gray-50">Localización / Jerarquía</th>
-                                    <th className="px-5 py-4 border-b border-gray-50">Líder</th>
-                                    <th className="px-5 py-4 border-b border-gray-50">Segundo</th>
+                                    <th className="px-8 py-4 border-b border-gray-50 w-1/4">Localización / Jerarquía</th>
+                                    <th colSpan={2} className="px-5 py-4 border-b border-gray-50">
+                                        <CandidateResultsHeader />
+                                    </th>
                                     <th className="px-5 py-4 border-b border-gray-50 text-center">Actividad</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {HIERARCHY_DATA.root.map((item: any) => (
-                                    <NestedRows key={item.id} item={item} level={0} />
+                                    <NestedRows key={item.id} item={item} level={0} filterStatus={filterStatus} />
                                 ))}
                             </tbody>
                         </table>
