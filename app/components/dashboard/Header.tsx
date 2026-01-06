@@ -1,13 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Bell, Settings, Calendar, Menu, Moon, Sun } from "lucide-react";
+import { Bell, Settings, Calendar, Menu, Moon, Sun, LogOut, User } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "@/app/contexts/ThemeContext";
+import { useAuth } from "@/app/contexts/AuthContext";
 
 export default function Header({ onMenuToggle }: { onMenuToggle?: () => void }) {
     const { theme, toggleTheme } = useTheme();
+    const { user, logout } = useAuth();
     const [mounted, setMounted] = useState(false);
+    const [showUserMenu, setShowUserMenu] = useState(false);
 
     useEffect(() => {
         setMounted(true);
@@ -28,8 +31,8 @@ export default function Header({ onMenuToggle }: { onMenuToggle?: () => void }) 
 
                     {/* Greeting */}
                     <div>
-                        <p className="text-[#A3AED0] dark:text-gray-400 text-xs font-medium hidden sm:block">Good Morning!</p>
-                        <h2 className="text-[#2B3674] dark:text-white font-bold text-sm sm:text-base">Operador Electoral</h2>
+                        <p className="text-[#A3AED0] dark:text-gray-400 text-xs font-medium hidden sm:block">Bienvenido</p>
+                        <h2 className="text-[#2B3674] dark:text-white font-bold text-sm sm:text-base">{user?.name || 'Usuario'}</h2>
                     </div>
                 </div>
 
@@ -52,7 +55,7 @@ export default function Header({ onMenuToggle }: { onMenuToggle?: () => void }) 
                     </Link>
                 </div>
 
-                {/* Right: Date, Theme, Notifications, Settings */}
+                {/* Right: Date, Theme, Notifications, Settings, User */}
                 <div className="flex items-center gap-2 md:gap-4">
                     {/* Date Selector (Hidden on mobile) */}
                     <div className="hidden xl:flex items-center gap-2 bg-[#F4F7FE] dark:bg-gray-800 rounded-full px-4 py-2">
@@ -86,9 +89,44 @@ export default function Header({ onMenuToggle }: { onMenuToggle?: () => void }) 
                         <Settings className="w-4 h-4 md:w-5 md:h-5 text-[#A3AED0] dark:text-gray-400" />
                     </button>
 
-                    {/* User Avatar */}
-                    <div className="w-8 h-8 md:w-9 md:h-9 bg-gradient-to-br from-[#4318FF] to-[#7551FF] rounded-full flex items-center justify-center text-white font-semibold text-xs shadow-md">
-                        OE
+                    {/* User Menu */}
+                    <div className="relative">
+                        <button 
+                            onClick={() => setShowUserMenu(!showUserMenu)}
+                            className="w-8 h-8 md:w-9 md:h-9 bg-gradient-to-br from-[#4318FF] to-[#7551FF] rounded-full flex items-center justify-center text-white font-semibold text-xs shadow-md hover:shadow-lg transition-all"
+                        >
+                            {user?.name?.charAt(0) || 'U'}
+                        </button>
+
+                        {/* User Dropdown Menu */}
+                        {showUserMenu && (
+                            <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden z-50">
+                                <div className="p-4 bg-gradient-to-r from-[#4318FF] to-[#7551FF]">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white font-bold">
+                                            {user?.name?.charAt(0) || 'U'}
+                                        </div>
+                                        <div>
+                                            <p className="text-white font-bold text-sm">{user?.name}</p>
+                                            <p className="text-white/80 text-xs">{user?.email}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="p-2">
+                                    <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl transition-colors text-left">
+                                        <User className="w-4 h-4 text-[#A3AED0]" />
+                                        <span className="text-sm font-medium text-[#2B3674] dark:text-gray-300">Mi Perfil</span>
+                                    </button>
+                                    <button 
+                                        onClick={logout}
+                                        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-colors text-left"
+                                    >
+                                        <LogOut className="w-4 h-4 text-red-500" />
+                                        <span className="text-sm font-medium text-red-500">Cerrar Sesión</span>
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
