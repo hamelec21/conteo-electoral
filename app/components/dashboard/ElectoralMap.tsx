@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui-blocks";
 import { MapContainer, TileLayer, Polygon, Tooltip, useMap, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-// import L from "leaflet"; 
+import L from "leaflet"; 
 
 // Placeholder coordinates for a generic polygon representing a region (Stylized Colombia-ish shape or Region)
 // In a real app, this would be GeoJSON.
@@ -24,7 +24,7 @@ const REGION_COORDS: [number, number][][] = [
 ];
 
 const MOCK_REGIONS = [
-    { name: "Bogotá", color: "#4318FF", coords: REGION_COORDS[0], votes: 450000, leader: "Abelardo de la Espriella", center: [4.8, -74.25] },
+    { name: "Bogotá", color: "#E31A1C", coords: REGION_COORDS[0], votes: 450000, leader: "Iván Cepeda", center: [4.8, -74.25] },
     { name: "Antioquia", color: "#E31A1C", coords: REGION_COORDS[1], votes: 380000, leader: "Iván Cepeda", center: [6.5, -75.5] },
     { name: "Valle", color: "#4318FF", coords: REGION_COORDS[2], votes: 210000, leader: "Abelardo de la Espriella", center: [3.5, -76.7] },
     { name: "Atlántico", color: "#E31A1C", coords: REGION_COORDS[3], votes: 150000, leader: "Iván Cepeda", center: [10.5, -74.5] }
@@ -45,7 +45,7 @@ export default function ElectoralMap({ height = "400px", showHeader = false }: {
         setIsMounted(true);
     }, []);
 
-    if (!isMounted) {
+    if (!isMounted || typeof window === 'undefined') {
         return (
              <div className="bg-[#F4F7FE] border-gray-100 text-[#2B3674] flex items-center justify-center rounded-2xl" style={{ height }}>
                 <p className="text-[10px] font-black uppercase tracking-widest animate-pulse">Cargando mapa...</p>
@@ -56,12 +56,12 @@ export default function ElectoralMap({ height = "400px", showHeader = false }: {
     const MapContent = (
         <div className="relative z-0 overflow-hidden rounded-2xl" style={{ height }}>
              <MapContainer 
-                center={[4.5, -73.0]} 
-                zoom={6} 
+                center={[4.5, -73.0] as any} 
+                zoom={4} 
                 scrollWheelZoom={false} 
                 className="h-full w-full"
                 style={{ background: '#F4F7FE' }}
-                maxBounds={[[-5, -85], [15, -65]]}
+                maxBounds={[[-5, -85], [15, -65]] as any}
                 maxBoundsViscosity={1.0}
             >
                 <MapController />
@@ -70,9 +70,7 @@ export default function ElectoralMap({ height = "400px", showHeader = false }: {
                     url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
                 />
                 {MOCK_REGIONS.map((region, idx) => {
-                    // @ts-ignore
-                    const L = typeof window !== 'undefined' ? window.L : null;
-                    const customIcon = L ? L.divIcon({
+                    const customIcon = L.divIcon({
                         className: 'custom-region-icon',
                         html: `
                           <div class="relative flex items-center justify-center">
@@ -82,12 +80,12 @@ export default function ElectoralMap({ height = "400px", showHeader = false }: {
                         `,
                         iconSize: [32, 32],
                         iconAnchor: [16, 16]
-                    }) : null;
+                    });
 
                     return (
                         <React.Fragment key={idx}>
                             <Polygon 
-                                positions={region.coords}
+                                positions={region.coords as any}
                                 pathOptions={{ 
                                     color: region.color, 
                                     fillColor: region.color, 
@@ -96,28 +94,26 @@ export default function ElectoralMap({ height = "400px", showHeader = false }: {
                                     dashArray: '3, 6'
                                 }}
                             />
-                            {customIcon && (
-                                <Marker position={region.center as any} icon={customIcon}>
-                                    <Tooltip sticky>
-                                        <div className="bg-white p-3 rounded-2xl shadow-xl border border-gray-100 min-w-[150px]">
-                                            <h4 className="text-[#2B3674] font-black text-[10px] uppercase tracking-widest mb-1">{region.name}</h4>
-                                            <div className="space-y-1">
-                                                <div className="flex justify-between items-center text-[9px]">
-                                                    <span className="text-[#A3AED0] font-black uppercase tracking-widest">Líder:</span>
-                                                    <span className="text-[#2B3674] font-black">{region.leader}</span>
-                                                </div>
-                                                <div className="flex justify-between items-center text-[9px]">
-                                                    <span className="text-[#A3AED0] font-black uppercase tracking-widest">Votos:</span>
-                                                    <span className="text-[#05CD99] font-black">{region.votes.toLocaleString()}</span>
-                                                </div>
+                            <Marker position={region.center as any} icon={customIcon}>
+                                <Tooltip sticky>
+                                    <div className="bg-white p-3 rounded-2xl shadow-xl border border-gray-100 min-w-[150px]">
+                                        <h4 className="text-[#2B3674] font-black text-[10px] uppercase tracking-widest mb-1">{region.name}</h4>
+                                        <div className="space-y-1">
+                                            <div className="flex justify-between items-center text-[9px]">
+                                                <span className="text-[#A3AED0] font-black uppercase tracking-widest">Líder:</span>
+                                                <span className="text-[#2B3674] font-black">{region.leader}</span>
                                             </div>
-                                            <div className="mt-2 w-full h-1 bg-gray-100 rounded-full overflow-hidden">
-                                                <div className="h-full bg-[#4318FF]" style={{ width: '65%' }}></div>
+                                            <div className="flex justify-between items-center text-[9px]">
+                                                <span className="text-[#A3AED0] font-black uppercase tracking-widest">Votos:</span>
+                                                <span className="text-[#05CD99] font-black">{region.votes.toLocaleString()}</span>
                                             </div>
                                         </div>
-                                    </Tooltip>
-                                </Marker>
-                            )}
+                                        <div className="mt-2 w-full h-1 bg-gray-100 rounded-full overflow-hidden">
+                                            <div className="h-full bg-[#4318FF]" style={{ width: '65%' }}></div>
+                                        </div>
+                                    </div>
+                                </Tooltip>
+                            </Marker>
                         </React.Fragment>
                     );
                 })}

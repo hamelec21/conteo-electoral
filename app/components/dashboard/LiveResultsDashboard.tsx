@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui-blocks";
 import { 
     Download, FileText, Users, Percent, 
     Box, CheckCircle, AlertTriangle, 
-    Eye, UserCheck, TrendingUp, Info
+    Eye, UserCheck, TrendingUp, Info, ChevronDown
 } from "lucide-react";
 import { 
     AreaChart, Area, XAxis, YAxis, 
@@ -14,6 +14,7 @@ import {
 } from "recharts";
 import RegionalResultsCards from "./RegionalResultsCards";
 import RegionalAnalysisTable from "./RegionalAnalysisTable";
+import GeographicConfidenceAnalysis from "./GeographicConfidenceAnalysis";
 import dynamic from "next/dynamic";
 // Removed html2canvas and jspdf as we now use a static template
 
@@ -34,14 +35,27 @@ const EVOLUTION_DATA = [
 ];
 
 const DONUT_DATA = [
-    { name: "Abelardo de la E.", value: 35, color: "#4318FF" },
-    { name: "Iván Cepeda", value: 29, color: "#E31A1C" },
+    { name: "Iván Cepeda", value: 35, color: "#E31A1C" },
+    { name: "Abelardo de la E.", value: 29, color: "#4318FF" },
     { name: "Paloma Valencia", value: 16, color: "#2563EB" },
     { name: "Sergio Fajardo", value: 11, color: "#05CD99" },
     { name: "Juan Carlos Pinzón", value: 9, color: "#FFB547" },
 ];
 
+const BULLETINS = [
+    { id: 15, time: "19:10h", date: "29/05/2026", url: "https://resultadosprecpresidente1v.registraduria.gov.co/presidente/166/colombia/santander/bucaramanga" },
+    { id: 14, time: "18:35h", date: "29/05/2026", url: "https://resultadosprecpresidente1v.registraduria.gov.co/presidente/166/colombia/santander/bucaramanga" },
+    { id: 13, time: "18:10h", date: "29/05/2026", url: "https://resultadosprecpresidente1v.registraduria.gov.co/presidente/166/colombia/santander/bucaramanga" },
+    { id: 12, time: "17:45h", date: "29/05/2026", url: "https://resultadosprecpresidente1v.registraduria.gov.co/presidente/166/colombia/santander/bucaramanga" },
+    { id: 11, time: "17:15h", date: "29/05/2026", url: "https://resultadosprecpresidente1v.registraduria.gov.co/presidente/166/colombia/santander/bucaramanga" },
+    { id: 10, time: "17:00h", date: "29/05/2026", url: "https://resultadosprecpresidente1v.registraduria.gov.co/presidente/166/colombia/santander/bucaramanga" },
+    { id: 9, time: "16:30h", date: "29/05/2026", url: "https://resultadosprecpresidente1v.registraduria.gov.co/presidente/166/colombia/santander/bucaramanga" },
+    { id: 8, time: "16:00h", date: "29/05/2026", url: "https://resultadosprecpresidente1v.registraduria.gov.co/presidente/166/colombia/santander/bucaramanga" },
+];
+
 export default function LiveResultsDashboard() {
+    const [isBulletinOpen, setIsBulletinOpen] = React.useState(false);
+    
     const handleDownloadTemplate = () => {
         const link = document.createElement('a');
         link.href = '/pdf/template.pdf';
@@ -60,10 +74,39 @@ export default function LiveResultsDashboard() {
                     <p className="text-[#A3AED0] text-sm font-bold uppercase tracking-widest mt-1">Consolidado nacional por agrupación política</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <button className="flex items-center gap-2 bg-[#4318FF] text-white px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg shadow-blue-200 hover:bg-[#3311CC] transition-all">
-                        <FileText className="w-4 h-4" /> Boletín 12
-                    </button>
-                     <button 
+                    {/* Bulletin Selector Dropdown */}
+                    <div className="relative">
+                        <button 
+                            onClick={() => setIsBulletinOpen(!isBulletinOpen)}
+                            className="flex items-center gap-2 bg-[#4318FF] text-white px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg shadow-blue-200 hover:bg-[#3311CC] transition-all"
+                        >
+                            <FileText className="w-4 h-4" /> Boletín 15
+                            <ChevronDown className={`w-3 h-3 transition-transform ${isBulletinOpen ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {isBulletinOpen && (
+                            <div className="absolute top-full right-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-gray-100 z-[100] py-4 animate-in fade-in slide-in-from-top-2 duration-200">
+                                <p className="px-6 pb-3 text-[10px] font-black text-[#A3AED0] uppercase tracking-widest border-b border-gray-50 mb-2">Boletines anteriores</p>
+                                <div className="max-h-60 overflow-y-auto custom-scrollbar">
+                                    {BULLETINS.map((b) => (
+                                        <a 
+                                            key={b.id} 
+                                            href={b.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex flex-col px-6 py-2.5 hover:bg-[#F4F7FE] transition-colors group cursor-pointer"
+                                        >
+                                            <span className="text-[#2B3674] font-black text-[11px] group-hover:text-[#4318FF]">
+                                                Boletín {b.id} - {b.time} - {b.date}
+                                            </span>
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    <button 
                         onClick={handleDownloadTemplate}
                         className="flex items-center gap-2 bg-[#4318FF] text-white px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg shadow-blue-200 hover:bg-[#3311CC] transition-all"
                     >
@@ -82,7 +125,7 @@ export default function LiveResultsDashboard() {
                     { label: "Votos Nulos", value: "0.9%", trend: "+0.1%", color: "#EE5D50" },
                     { label: "Votos Válidos", value: "96.7%", trend: "Alta confiabilidad", color: "#4318FF" },
                     { label: "Preconteo Cierre", value: "19:20", trend: "Estimado en tiempo real", color: "#7551FF" },
-                    { label: "Espectadores", value: "1,234", trend: "Conectados ahora", icon: Eye },
+                    { label: "Espectadores", value: "45", trend: "Conectados ahora", icon: Eye ,color: "rgb(5, 205, 153)"},
                     { label: "Testigos", value: "1,234", trend: "Reportando ahora", icon: UserCheck },
                 ].map((item: any, idx) => (
                     <Card key={idx} className="border-0 shadow-sm bg-white p-4 flex flex-col justify-between">
@@ -91,7 +134,7 @@ export default function LiveResultsDashboard() {
                             <p className="text-lg font-black text-[#2B3674]">{item.value}</p>
                         </div>
                         {item.trend && (
-                            <p className={`text-[8px] font-bold mt-2 ${item.color ? '' : 'text-[#A3AED0]'}`} style={{ color: item.color }}>
+                            <p className={`text-[10px] font-bold mt-2 ${item.color ? '' : 'text-[#A3AED0]'}`} style={{ color: item.color }}>
                                 {item.trend}
                             </p>
                         )}
@@ -101,19 +144,33 @@ export default function LiveResultsDashboard() {
                 
                 {/* Gauge Card (Incidencias) */}
                 <Card className="border-0 shadow-sm bg-white p-4 relative overflow-hidden flex flex-col justify-between">
-                    <p className="text-[10px] font-black text-[#A3AED0] uppercase tracking-widest mb-1 leading-tight text-center">Incidencias</p>
+                    <p className="text-xs font-black text-[#A3AED0] uppercase tracking-widest mb-2 leading-tight text-center">Incidencias</p>
                     <div className="flex flex-col items-center justify-center flex-1">
-                        <div className="relative w-16 h-10 overflow-hidden flex items-end justify-center">
-                            {/* SVG Gauge */}
-                            <svg className="w-16 h-16 transform -translate-y-2">
-                                <circle cx="32" cy="32" r="28" fill="none" stroke="#F4F7FE" strokeWidth="6" strokeDasharray="88 100" strokeDashoffset="44" strokeLinecap="round" />
-                                <circle cx="32" cy="32" r="28" fill="none" stroke="#05CD99" strokeWidth="6" strokeDasharray="44 100" strokeDashoffset="44" strokeLinecap="round" />
+                        <div className="relative w-20 h-12 overflow-hidden flex items-end justify-center">
+                            {/* SVG Gauge - Improved Semi-circle path */}
+                            <svg viewBox="0 0 100 55" className="w-20 h-11">
+                                <path 
+                                    d="M 10 50 A 40 40 0 0 1 90 50" 
+                                    fill="none" 
+                                    stroke="#F4F7FE" 
+                                    strokeWidth="10" 
+                                    strokeLinecap="round" 
+                                />
+                                <path 
+                                    d="M 10 50 A 40 40 0 0 1 50 10" 
+                                    fill="none" 
+                                    stroke="#E31A1C" 
+                                    strokeWidth="10" 
+                                    strokeLinecap="round" 
+                                    strokeDasharray="125"
+                                    strokeDashoffset="60"
+                                />
                             </svg>
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-2">
-                                <AlertTriangle className="w-3 h-3 text-[#FFB547]" />
+                            <div className="absolute bottom-1 left-1/2 -translate-x-1/2 translate-y-0.5">
+                                <AlertTriangle className="w-4 h-4 text-[#FFB547]" />
                             </div>
                         </div>
-                        <p className="text-[10px] font-black text-[#2B3674] mt-1 tracking-widest text-center">15.51K</p>
+                        <p className="text-sm font-black text-[#2B3674] mt-2 tracking-widest text-center">15.51K</p>
                     </div>
                 </Card>
             </div>
@@ -130,14 +187,14 @@ export default function LiveResultsDashboard() {
                 </Card>
                 {[
                     { label: "Votos Contabilizados", value: "1.234.567", sub: "Total nacional" },
-                    { label: "Candidato Líder", value: "Abelardo de la Espriella", sub: "Tendencia clave" },
-                    { label: "Diferencia Votos", value: "+ 6.2%", sub: "Margen de victoria", color: "#05CD99" },
-                    { label: "Índice de Confianza", value: "98.4%", sub: "Alta seguridad" },
+                    { label: "Candidato Líder", value: "Iván Cepeda", sub: "Tendencia clave" },
+                    { label: "Diferencia Votos", value: "+ 8.4%", sub: "Margen de victoria", color: "#05CD99" },
+                    { label: "Índice de Confianza", value: "98.4%", sub: "Alta seguridad", color: "text-white", bgColor: "bg-green-600" },
                 ].map((item, idx) => (
-                    <Card key={idx} className="bg-white border-0 shadow-sm p-5 relative group overflow-hidden">
-                        <p className="text-xs font-bold text-[#A3AED0] uppercase tracking-widest mb-1">{item.label}</p>
-                        <p className={`text-xl font-black ${item.color ? '' : 'text-[#2B3674]'}`} style={{ color: item.color }}>{item.value}</p>
-                        <p className="text-[10px] font-bold text-[#707EAE] mt-1">{item.sub}</p>
+                    <Card key={idx} className={`${item.bgColor || 'bg-white'} border-0 shadow-sm p-5 relative group overflow-hidden`}>
+                        <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${item.bgColor ? 'text-white/80' : 'text-[#A3AED0]'}`}>{item.label}</p>
+                        <p className={`text-xl font-black ${item.color?.startsWith('text-') ? item.color : ''}`} style={{ color: item.color?.startsWith('#') ? item.color : undefined }}>{item.value}</p>
+                        <p className={`text-[10px] font-bold mt-1 ${item.bgColor ? 'text-white/60' : 'text-[#707EAE]'}`}>{item.sub}</p>
                     </Card>
                 ))}
             </div>
@@ -154,9 +211,9 @@ export default function LiveResultsDashboard() {
                         </CardHeader>
                         <CardContent className="p-4">
                             <div className="space-y-4">
-                                {[
-                                    { name: "Abelardo de la Espriella", votes: "450.300", pct: "35%", img: "/images/candidatos/Abelardo_de _la_Espriella.png" },
-                                    { name: "Iván Cepeda", votes: "380.200", pct: "29%", img: "/images/candidatos/Ivan_cepeda.png" },
+                                 {[
+                                    { name: "Iván Cepeda", votes: "480.200", pct: "36%", img: "/images/candidatos/Ivan_cepeda.png" },
+                                    { name: "Abelardo de la Espriella", votes: "420.300", pct: "32%", img: "/images/candidatos/Abelardo_de _la_Espriella.png" },
                                     { name: "Paloma Valencia", votes: "210.100", pct: "16%", img: "/images/candidatos/paloma_valencia.png" },
                                     { name: "Sergio Fajardo", votes: "150.500", pct: "11%", img: "/images/candidatos/sergio_fajardo.png" },
                                     { name: "Juan Carlos Pinzón", votes: "80.600", pct: "6%", img: "/images/candidatos/juan_carlos_pinzon.png" },
@@ -186,7 +243,7 @@ export default function LiveResultsDashboard() {
                     {/* Summary (AI Analysis + Line Chart) */}
                     <Card className="border-0 shadow-sm bg-white overflow-hidden flex flex-col">
                         <CardHeader className="px-6 py-4 border-b border-gray-50 flex items-center justify-between">
-                            <CardTitle className="text-sm font-black text-[#2B3674] uppercase tracking-widest leading-none">Summary</CardTitle>
+                            <CardTitle className="text-sm font-black text-[#2B3674] uppercase tracking-widest leading-none">ANALISIS DE NEURONA IA</CardTitle>
                             <div className="flex items-center gap-2 bg-[#F4F7FE] px-2 py-1 rounded-lg">
                                 <span className="text-[8px] font-bold text-[#2B3674]">19/03/2024 - 25/03/2024</span>
                                 <TrendingUp size={10} className="text-[#A3AED0]" />
@@ -265,26 +322,25 @@ export default function LiveResultsDashboard() {
                                         </Pie>
                                     </PieChart>
                                 </ResponsiveContainer>
-                                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                                    <p className="text-lg font-black text-[#2B3674]">1,165.30k</p>
-                                    <p className="text-[8px] font-black text-[#A3AED0] uppercase tracking-widest">Portfolio Value</p>
-                                </div>
-                            </div>
-                            <div className="w-full space-y-4">
-                                {DONUT_DATA.map((item, i) => (
-                                    <div key={i} className="flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }}></div>
-                                            <span className="text-[10px] font-black text-[#A3AED0] uppercase tracking-wider truncate max-w-[120px]">{item.name}</span>
-                                        </div>
-                                        <div className="text-right">
-                                            <p className="text-xs font-black text-[#2B3674]">{item.value * 5.4}k</p>
-                                            <p className="text-[8px] font-bold text-[#05CD99]">▲ 20.16%</p>
-                                        </div>
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                        <p className="text-lg font-black text-[#2B3674]">1,165k</p>
+                                        <p className="text-[8px] font-black text-[#A3AED0] uppercase tracking-widest">Portfolio Value</p>
                                     </div>
-                                ))}
+                                </div>
+                                <div className="w-full space-y-4">
+                                    {DONUT_DATA.map((item, i) => (
+                                        <div key={i} className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }}></div>
+                                                <span className="text-[10px] font-black text-[#A3AED0] uppercase tracking-wider truncate max-w-[120px]">{item.name}</span>
+                                            </div>
+                                            <div className="text-right">
+                                                <p className="text-xs font-black text-[#2B3674]">{Math.round(item.value * 5.4)}k</p>
+                                                <p className="text-[8px] font-bold text-[#05CD99]">▲ 20.16%</p>
+                                            </div>
+                                        </div>
+                                    ))}
                             </div>
-                            <p className="text-[8px] font-medium text-[#A3AED0] mt-6 text-center italic">You have invested in different types of categories shown as above and summary of each category.</p>
                         </CardContent>
                     </Card>
 
@@ -302,9 +358,9 @@ export default function LiveResultsDashboard() {
                                 </div>
                             </CardHeader>
                             <CardContent className="p-6">
-                                <p className="text-xs font-black text-[#2B3674] mb-4">GANA <span className="text-[#A3AED0] font-bold uppercase ml-2 text-[10px]">Abelardo de la Espriella</span> <span className="text-[#4318FF] ml-1">63%</span></p>
-                                <div className="h-32 w-full bg-[#111C44] rounded-xl overflow-hidden relative shadow-inner">
-                                    {/* Mock small chart in black background */}
+                                <p className="text-xs font-black text-[#2B3674] mb-4">GANA <span className="text-[#A3AED0] font-bold uppercase ml-2 text-[10px]">Iván Cepeda</span> <span className="text-[#E31A1C] ml-1">63%</span></p>
+                                <div className="h-32 w-full bg-[#F4F7FE] rounded-xl overflow-hidden relative shadow-inner">
+                                    {/* Mock small chart in light background */}
                                     <ResponsiveContainer width="100%" height="100%">
                                         <AreaChart data={EVOLUTION_DATA}>
                                             <Area type="monotone" dataKey="value" stroke="#4318FF" fill="#4318FF" fillOpacity={0.2} strokeWidth={2} dot={false} />
@@ -328,22 +384,26 @@ export default function LiveResultsDashboard() {
                         </Card>
 
                         {/* Interactive Map Block */}
-                        <Card className="border-0 shadow-sm bg-white overflow-hidden h-[240px] relative">
-                             <ElectoralMap height="240px" />
-                             {/* Floating Legend Overlay */}
-                             <div className="absolute top-4 left-6 z-10 flex flex-col pointer-events-none">
-                                <h3 className="text-[10px] font-black text-[#2B3674] uppercase tracking-widest mb-1">Mapa Electoral Interactivo</h3>
+                        <Card className="border-0 shadow-sm bg-white overflow-hidden flex flex-col h-[300px]">
+                            <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between border-b border-gray-50">
+                                <div>
+                                    <h3 className="text-[10px] font-black text-[#2B3674] uppercase tracking-widest">Mapa Electoral Interactivo</h3>
+                                    <p className="text-[8px] font-bold text-[#A3AED0] uppercase tracking-widest">Tendencias por región</p>
+                                </div>
                                 <div className="flex gap-3">
-                                    <div className="flex items-center gap-1">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#4318FF]"></div>
-                                        <span className="text-[8px] font-black text-[#A3AED0] uppercase tracking-widest">De la Espriella</span>
-                                    </div>
                                     <div className="flex items-center gap-1">
                                         <div className="w-1.5 h-1.5 rounded-full bg-[#E31A1C]"></div>
                                         <span className="text-[8px] font-black text-[#A3AED0] uppercase tracking-widest">Iván Cepeda</span>
                                     </div>
+                                    <div className="flex items-center gap-1">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#4318FF]"></div>
+                                        <span className="text-[8px] font-black text-[#A3AED0] uppercase tracking-widest">Abelardo de la Espriella</span>
+                                    </div>
                                 </div>
-                             </div>
+                            </CardHeader>
+                            <CardContent className="p-0 flex-1 relative overflow-hidden">
+                                <ElectoralMap height="100%" />
+                            </CardContent>
                         </Card>
                     </div>
                 </div>

@@ -63,28 +63,28 @@ export default function IntegrityTrust() {
                     <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
                         <div className="flex items-center gap-2 text-[#05CD99] mb-1">
                             <ShieldCheck className="w-4 h-4 flex-shrink-0" />
-                            <span className="text-[9px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Hash Válido</span>
+                            <span className="text-xs font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Hash Válido</span>
                         </div>
                         <p className="text-lg font-black dark:text-white tracking-tighter">{integrity.hashValid}%</p>
                     </div>
                     <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
                         <div className="flex items-center gap-2 text-[#4318FF] dark:text-[#7551FF] mb-1">
                             <Fingerprint className="w-4 h-4 flex-shrink-0" />
-                            <span className="text-[9px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Firma Digital</span>
+                            <span className="text-xs font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Firma Digital</span>
                         </div>
                         <p className="text-lg font-black dark:text-white tracking-tighter">{integrity.signatureValid}%</p>
                     </div>
                      <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
                         <div className="flex items-center gap-2 text-[#FFB547] mb-1">
                             <Clock className="w-4 h-4 flex-shrink-0" />
-                            <span className="text-[9px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Sello Tiempo</span>
+                            <span className="text-xs font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Sello Tiempo</span>
                         </div>
                         <p className="text-lg font-black dark:text-white tracking-tighter">{integrity.timestampValid}%</p>
                     </div>
                      <div className="bg-[#F4F7FE] dark:bg-gray-800 p-3 rounded-lg min-w-0">
                         <div className="flex items-center gap-2 text-[#E5E7EB] dark:text-gray-500 mb-1">
                             <MapPin className="w-4 h-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />
-                            <span className="text-[9px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Geolocalización</span>
+                            <span className="text-xs font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Geolocalización</span>
                         </div>
                          <p className="text-lg font-black dark:text-white tracking-tighter">{integrity.geoValid}%</p>
                     </div>

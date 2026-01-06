@@ -45,16 +45,35 @@ export default function MenuPage({ params }: { params: Promise<{ category: strin
             ssr: false,
             loading: () => <div className="h-[600px] w-full bg-gray-100 animate-pulse rounded-xl" />
         });
+
+        const RiskMap = dynamic(() => import("../../components/dashboard/RiskMap"), {
+            ssr: false,
+            loading: () => <div className="h-[600px] w-full bg-gray-100 animate-pulse rounded-xl" />
+        });
+
+        const HistoricalRiskMap = dynamic(() => import("../../components/dashboard/HistoricalRiskMap"), {
+            ssr: false,
+            loading: () => <div className="h-[600px] w-full bg-gray-100 animate-pulse rounded-xl" />
+        });
         
         return (
             <DashboardShell>
-                <div className="mb-6">
-                    <h2 className="text-3xl font-bold text-[#2B3674] tracking-tight">Georreferenciación Electoral</h2>
-                    <p className="text-[#A3AED0]">Mapa térmico de votación a nivel municipal.</p>
+                <div className="mb-8">
+                    <h2 className="text-3xl font-black text-[#2B3674] tracking-tight">Análisis Georreferenciado Nacional</h2>
+                    <p className="text-[#A3AED0] font-bold uppercase tracking-widest text-xs mt-1">Monitoreo de incidentes, riesgos y tendencias geográficas</p>
                 </div>
-                <Card className="bg-white p-1 overflow-hidden shadow-lg border-0">
-                    <ElectoralMap height="600px" />
-                </Card>
+
+                <div className="space-y-12">
+                    {/* Primary: Georeferenced Risk Monitor */}
+                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                        <RiskMap data={{}} />
+                    </div>
+
+                    {/* Historical Electoral Risk Map */}
+                    <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+                        <HistoricalRiskMap data={{}} />
+                    </div>
+                </div>
             </DashboardShell>
         );
     }
