@@ -10,26 +10,26 @@ export const ELECTION_DATA = {
         tablesReported: 12345,
         totalTables: 19800,
         votesCounted: 1234567,
-        leader: "Abelardo de la Espriella",
+        leader: "Iván Cepeda",
         trustIndex: 98.4,
-        voteDifference: 6.2
+        voteDifference: 8.4
     },
     candidates: [
         { 
-            name: "Abelardo de la Espriella", 
-            votes: 450300, 
-            color: "#4318FF", 
-            percent: 35,
-            profession: "Abogado",
-            photo: "/images/candidatos/Abelardo_de _la_Espriella.png" 
-        },
-        { 
             name: "Iván Cepeda", 
-            votes: 380200, 
+            votes: 480200, 
             color: "#E31A1C", 
-            percent: 29,
+            percent: 36,
             profession: "Senador de Colombia",
             photo: "/images/candidatos/Ivan_cepeda.png" 
+        },
+        { 
+            name: "Abelardo de la Espriella", 
+            votes: 420300, 
+            color: "#4318FF", 
+            percent: 32,
+            profession: "Abogado",
+            photo: "/images/candidatos/Abelardo_de _la_Espriella.png" 
         },
         { 
             name: "Paloma Valencia", 
@@ -94,9 +94,9 @@ export const ELECTION_DATA = {
         ]
     },
     pollingStations: [
-        { id: "0234", place: "Col A", municipality: "Bogotá", state: "OK", risk: "Bajo", winner: "Abelardo de la Espriella", votes: { abelardo: 156, ivan: 120 }, evidence: { hash: "9f2a...c91", signature: "VALID", time: "18:02:14", device: "DEV-00123" } },
+        { id: "0234", place: "Col A", municipality: "Bogotá", state: "OK", risk: "Bajo", winner: "Iván Cepeda", votes: { abelardo: 156, ivan: 120 }, evidence: { hash: "9f2a...c91", signature: "VALID", time: "18:02:14", device: "DEV-00123" } },
         { id: "0235", place: "Col B", municipality: "Medellín", state: "Alerta", risk: "Media", winner: "Iván Cepeda", votes: { abelardo: 98, ivan: 145 }, evidence: { hash: "3b1c...d22", signature: "INVALID", time: "18:05:00", device: "DEV-00124" } },
-        { id: "0236", place: "Escuela 5", municipality: "Cali", state: "OK", risk: "Bajo", winner: "Abelardo de la Espriella", votes: { abelardo: 210, ivan: 90 }, evidence: { hash: "7a8b...e11", signature: "VALID", time: "17:55:22", device: "DEV-00125" } },
+        { id: "0236", place: "Escuela 5", municipality: "Cali", state: "OK", risk: "Bajo", winner: "Iván Cepeda", votes: { abelardo: 210, ivan: 90 }, evidence: { hash: "7a8b...e11", signature: "VALID", time: "17:55:22", device: "DEV-00125" } },
         { id: "0237", place: "Col Mayor", municipality: "Barranquilla", state: "OK", risk: "Bajo", winner: "Iván Cepeda", votes: { abelardo: 85, ivan: 190 }, evidence: { hash: "1d4f...a99", signature: "VALID", time: "18:10:45", device: "DEV-00126" } },
         { id: "0238", place: "Rural 1", municipality: "Quibdó", state: "Incidencia", risk: "Alta", winner: "N/A", votes: { abelardo: 45, ivan: 42 }, evidence: { hash: "MISSING", signature: "MISSING", time: "N/A", device: "DEV-00127" } },
     ]

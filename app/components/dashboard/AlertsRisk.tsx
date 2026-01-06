@@ -33,7 +33,7 @@ export default function AlertsRisk() {
                                      <Cell key={`cell-${index}`} fill={entry.color} />
                                  ))}
                              </Pie>
-                             <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{fontSize: '11px', color: '#9CA3AF'}}/>
+                             <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{fontSize: '12px', color: '#9CA3AF'}}/>
                          </PieChart>
                      </ResponsiveContainer>
                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -mt-4">
@@ -41,7 +41,6 @@ export default function AlertsRisk() {
                         <p className="text-[10px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Total</p>
                     </div>
                  </div>
-
                  {/* Bottom: 2 Columns */}
                  <div className="grid grid-cols-2 gap-4">
                     {/* Col 1: Counts */}

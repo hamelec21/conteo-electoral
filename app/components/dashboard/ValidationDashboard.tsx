@@ -16,9 +16,9 @@ const StatCard = ({ label, value, icon: Icon, subValue, highlight = false, color
                          <Icon className="w-5 h-5 text-[#4318FF]" />
                     </div>
                 )}
-                <p className={`text-[10px] font-black uppercase tracking-widest opacity-70 ${highlight ? 'text-white' : 'text-[#A3AED0]'}`}>{label}</p>
+                <p className={`text-xs font-black uppercase tracking-widest opacity-70 ${highlight ? 'text-white' : 'text-[#A3AED0]'}`}>{label}</p>
                 <h3 className="text-xl font-black mt-1 tracking-tight">{value}</h3>
-                {subValue && <p className={`text-[9px] mt-1 font-black uppercase tracking-widest ${highlight ? 'text-blue-100' : 'text-[#A3AED0]'}`}>{subValue}</p>}
+                {subValue && <p className={`text-sm mt-1 font-black uppercase tracking-widest ${highlight ? 'text-blue-100' : 'text-[#A3AED0]'}`}>{subValue}</p>}
             </div>
             {Icon && highlight && (
                  <div className="p-3 rounded-full bg-white/20">
@@ -121,8 +121,8 @@ const Riskometer = ({ value, label, percentage }: any) => {
                         <span className="text-[10px] font-bold text-[#2B3674] uppercase tracking-tighter">Validación en Tiempo Real</span>
                     </div>
                 </div>
-                <div className="bg-[#F4F7FE] px-4 py-2 rounded-2xl border border-gray-50 group-hover:bg-white group-hover:shadow-md transition-all">
-                    <span className="text-xl font-black text-[#2B3674]">98.2%</span>
+                <div className="bg-green-600 px-4 py-2 rounded-2xl border border-green-500 group-hover:bg-green-700 group-hover:shadow-md transition-all">
+                    <span className="text-xl font-black text-white">98.2%</span>
                 </div>
             </div>
 
@@ -150,17 +150,17 @@ const Riskometer = ({ value, label, percentage }: any) => {
                         ></div>
                     </div>
                     
-                    <div className="flex justify-between mt-4 px-1">
+                     <div className="flex justify-between mt-4 px-1">
                         <div className="flex flex-col items-start gap-1">
-                             <span className="text-[10px] font-black text-[#05CD99] uppercase tracking-widest">ALTA</span>
+                             <span className="text-xs font-black text-[#05CD99] uppercase tracking-widest">ALTA</span>
                              <div className="w-8 h-1 bg-[#05CD99] rounded-full"></div>
                         </div>
                         <div className="flex flex-col items-center gap-1">
-                             <span className="text-[10px] font-black text-[#FFD95A] uppercase tracking-widest opacity-50">MEDIA</span>
+                             <span className="text-xs font-black text-[#FFD95A] uppercase tracking-widest opacity-50">MEDIA</span>
                              <div className="w-8 h-1 bg-[#FFD95A] rounded-full opacity-30"></div>
                         </div>
                         <div className="flex flex-col items-end gap-1">
-                             <span className="text-[10px] font-black text-[#E31A1C] uppercase tracking-widest opacity-50">CRÍTICA</span>
+                             <span className="text-xs font-black text-[#E31A1C] uppercase tracking-widest opacity-50">CRÍTICA</span>
                              <div className="w-8 h-1 bg-[#E31A1C] rounded-full opacity-30"></div>
                         </div>
                     </div>
@@ -356,7 +356,7 @@ export default function ValidationDashboard({ data }: { data: any }) {
                                 </div>
                                 <h4 className="text-sm font-black text-[#2B3674] uppercase tracking-wider">Integridad de Proceso</h4>
                             </div>
-                            <p className="text-[10px] font-bold text-[#A3AED0] uppercase">Métricas de validación avanzada</p>
+                            <p className="text-xs font-bold text-[#A3AED0] uppercase">Métricas de validación avanzada</p>
                         </div>
                         
                         <div className="flex-1 flex flex-col items-center justify-center min-h-[300px]">
@@ -461,13 +461,13 @@ export default function ValidationDashboard({ data }: { data: any }) {
                              <div className="flex flex-col gap-1.5">
                                  <div className="flex items-center gap-2">
                                      <ShieldCheck size={14} className="text-[#4318FF]" />
-                                     <span className="text-[9px] font-bold text-[#A3AED0] uppercase tracking-tighter line-clamp-1">Pendientes</span>
+                                     <span className="text-xs font-bold text-[#A3AED0] uppercase tracking-tighter line-clamp-1">Pendientes</span>
                                  </div>
                                  <div className="flex flex-col pl-5">
                                      <span className="text-lg font-black text-[#2B3674]">190.4k</span>
                                      <div className="flex items-center gap-1 text-[#05CD99] mt-0.5">
                                          <TrendingUp size={10} />
-                                         <span className="text-[9px] font-bold">18.5%</span>
+                                         <span className="text-xs font-bold">18.5%</span>
                                      </div>
                                  </div>
                              </div>

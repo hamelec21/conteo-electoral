@@ -39,7 +39,7 @@ const DEPARTMENTS = [
     }
 ];
 
-import RegionalMap from "./RegionalMap";
+import GeographicConfidenceAnalysis from "./GeographicConfidenceAnalysis";
 
 const CandidateCell = ({ data }: { data: any }) => (
     <div className="flex flex-col py-1">
@@ -121,37 +121,10 @@ export default function RegionalAnalysisTable() {
                 </div>
             </Card>
 
-            {/* Regional Map Component (Right 1/4) */}
-            <Card className="border-0 shadow-lg rounded-3xl bg-white overflow-hidden flex flex-col group relative">
-                {/* Light Grid Background Effect */}
-                <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#4318FF_1px,transparent_1px)] [background-size:20px_20px]" />
-                
-                <CardHeader className="p-8 pb-4 relative z-10">
-                    <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-[#F4F7FE] rounded-full">
-                            <MapIcon className="w-5 h-5 text-[#4318FF]" />
-                        </div>
-                        <CardTitle className="text-[#2B3674] text-lg font-black tracking-tight">Mapa Visual</CardTitle>
-                    </div>
-                    <p className="text-[#A3AED0] text-[10px] font-bold uppercase tracking-widest">Selector Geográfico</p>
-                </CardHeader>
-                
-                <CardContent className="flex-1 p-0 relative min-h-[300px] z-10">
-                    <RegionalMap onSelectRegion={setSelectedRegion} />
-                </CardContent>
-                
-                <div className="p-8 bg-gray-50/50 backdrop-blur-md border-t border-gray-100 relative z-10">
-                    <div className="space-y-4">
-                        <div className="flex justify-between items-center">
-                            <span className="text-[#A3AED0] text-xs font-bold">Región Seleccionada</span>
-                            <span className="text-[#2B3674] text-xs font-black uppercase tracking-widest">{selectedRegion}</span>
-                        </div>
-                        <div className="w-full h-1 bg-[#F4F7FE] rounded-full overflow-hidden">
-                            <div className="h-full bg-[#4318FF] w-[65%] shadow-[0_0_10px_rgba(67,24,255,0.2)] transition-all duration-500" />
-                        </div>
-                    </div>
-                </div>
-            </Card>
+            {/* Regional Analysis Dashboard (Right 1/4) */}
+            <div className="lg:col-span-1">
+                <GeographicConfidenceAnalysis />
+            </div>
         </div>
     );
 }

@@ -192,8 +192,8 @@ export const PAGE_CONTENT: Record<string, any> = {
         type: "table", 
         columns: ["Candidato / Partido", "Votos Totales", "Porcentaje", "Votos Urbanos", "Votos Rurales", "Variación vs 2022"], 
         data: [
-            { can: "Abelardo de la Espriella", tot: "4,520,100", pct: "45.2%", urb: "3.1M", rur: "1.4M", var: "+12%" },
-            { can: "Iván Cepeda", tot: "3,890,200", pct: "38.9%", urb: "2.8M", rur: "1.0M", var: "+5%" },
+            { can: "Iván Cepeda", tot: "4,520,100", pct: "45.2%", urb: "3.1M", rur: "1.4M", var: "+12%" },
+            { can: "Abelardo de la Espriella", tot: "3,890,200", pct: "38.9%", urb: "2.8M", rur: "1.0M", var: "+5%" },
             { can: "Voto en Blanco", tot: "250,000", pct: "2.5%", urb: "200K", rur: "50K", var: "-1%" },
             { can: "Nulos", tot: "120,000", pct: "1.2%", urb: "100K", rur: "20K", var: "0%" },
         ],
@@ -226,7 +226,7 @@ export const PAGE_CONTENT: Record<string, any> = {
             },
             candidate: {
                 label: "Candidato Lider",
-                name: "Abelardo de la Espriella",
+                name: "Iván Cepeda",
                 trend: "Tendencia clara"
             },
             integrity: {
@@ -687,57 +687,57 @@ export const PAGE_CONTENT: Record<string, any> = {
 export const REGIONAL_RESULTS = [
     {
         name: "ANDINA",
-        icon: "Box", // Placeholder for specific icon
+        img: "/images/regiones/andina.png",
         color: "#4318FF",
         candidates: [
-            { name: "ABELARDO DE LA E.", pct: "94%", color: "#05CD99" },
-            { name: "PALOMA VALENCIA", pct: "94%", color: "#FFB547" },
-            { name: "SERGIO FAJARDO", pct: "94%", color: "#7551FF" },
-            { name: "IVAN CEPEDA", pct: "94%", color: "#EE5D50" }
+            { name: "IVAN CEPEDA", pct: "42.15%", color: "#E31A1C" },
+            { name: "ABELARDO DE LA E.", pct: "38.40%", color: "#4318FF" },
+            { name: "PALOMA VALENCIA", pct: "12.10%", color: "#FFB547" },
+            { name: "SERGIO FAJARDO", pct: "7.35%", color: "#7551FF" }
         ]
     },
     {
         name: "CARIBE",
-        icon: "Building",
+        img: "/images/regiones/caribe.png",
         color: "#05CD99",
         candidates: [
-            { name: "ABELARDO DE LA E.", pct: "94%", color: "#05CD99" },
-            { name: "PALOMA VALENCIA", pct: "94%", color: "#FFB547" },
-            { name: "SERGIO FAJARDO", pct: "94%", color: "#7551FF" },
-            { name: "IVAN CEPEDA", pct: "94%", color: "#EE5D50" }
+            { name: "IVAN CEPEDA", pct: "48.20%", color: "#E31A1C" },
+            { name: "ABELARDO DE LA E.", pct: "32.15%", color: "#4318FF" },
+            { name: "PALOMA VALENCIA", pct: "10.45%", color: "#FFB547" },
+            { name: "SERGIO FAJARDO", pct: "9.20%", color: "#7551FF" }
         ]
     },
     {
         name: "PACÍFICA",
-        icon: "Percent",
+        img: "/images/regiones/pacifica.png",
         color: "#FFB547",
         candidates: [
-            { name: "ABELARDO DE LA E.", pct: "94%", color: "#05CD99" },
-            { name: "PALOMA VALENCIA", pct: "94%", color: "#FFB547" },
-            { name: "SERGIO FAJARDO", pct: "94%", color: "#7551FF" },
-            { name: "IVAN CEPEDA", pct: "94%", color: "#EE5D50" }
+            { name: "IVAN CEPEDA", pct: "52.40%", color: "#E31A1C" },
+            { name: "ABELARDO DE LA E.", pct: "25.30%", color: "#4318FF" },
+            { name: "PALOMA VALENCIA", pct: "12.15%", color: "#FFB547" },
+            { name: "SERGIO FAJARDO", pct: "10.15%", color: "#7551FF" }
         ]
     },
     {
         name: "ORINOQUÍA",
-        icon: "Grid",
+        img: "/images/regiones/arionoquia.png",
         color: "#EE5D50",
         candidates: [
-            { name: "ABELARDO DE LA E.", pct: "94%", color: "#05CD99" },
-            { name: "PALOMA VALENCIA", pct: "94%", color: "#FFB547" },
-            { name: "SERGIO FAJARDO", pct: "94%", color: "#7551FF" },
-            { name: "IVAN CEPEDA", pct: "94%", color: "#EE5D50" }
+            { name: "IVAN CEPEDA", pct: "31.15%", color: "#E31A1C" },
+            { name: "ABELARDO DE LA E.", pct: "45.10%", color: "#4318FF" },
+            { name: "PALOMA VALENCIA", pct: "15.40%", color: "#FFB547" },
+            { name: "SERGIO FAJARDO", pct: "8.35%", color: "#7551FF" }
         ]
     },
     {
         name: "AMAZONÍA",
-        icon: "Grid",
+        img: "/images/regiones/amazonia.png",
         color: "#E31A1C",
         candidates: [
-            { name: "ABELARDO DE LA E.", pct: "94%", color: "#05CD99" },
-            { name: "PALOMA VALENCIA", pct: "94%", color: "#FFB547" },
-            { name: "SERGIO FAJARDO", pct: "94%", color: "#7551FF" },
-            { name: "IVAN CEPEDA", pct: "94%", color: "#EE5D50" }
+            { name: "IVAN CEPEDA", pct: "55.15%", color: "#E31A1C" },
+            { name: "ABELARDO DE LA E.", pct: "22.40%", color: "#4318FF" },
+            { name: "PALOMA VALENCIA", pct: "12.30%", color: "#FFB547" },
+            { name: "SERGIO FAJARDO", pct: "10.15%", color: "#7551FF" }
         ]
     }
 ];
