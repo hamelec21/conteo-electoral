@@ -113,6 +113,16 @@ const HIERARCHY_DATA: any = {
                 { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
                 { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
             ]
+        },
+        { 
+            id: "mesa03_p1_buc", name: "MESA 03", type: "table", status: "Riesgo Alto", alerts: "Discrepancia persistente",
+            results: [
+                { id: "abe", name: "ABELARDO DE LA E.", pct: "35.15%", profit: "485,000", color: "#4318FF" },
+                { id: "iva", name: "IVAN CEPEDA", pct: "35.15%", profit: "485,000", color: "#E31A1C" },
+                { id: "pal", name: "PALOMA VALENCIA", pct: "35.15%", profit: "485,000", color: "#00BAAD" },
+                { id: "faj", name: "SERGIO FAJARDO", pct: "35.15%", profit: "485,000", color: "#FFB547" },
+                { id: "otr", name: "OTROS", pct: "35.15%", profit: "485,000", color: "#A3AED0" }
+            ]
         }
     ],
     "antioquia": [
@@ -203,8 +213,12 @@ const MesaDetailContent = ({ item }: { item: any }) => {
                         </div>
 
                         {/* Alerts & Risks Section */}
-                        <div className="bg-[#FFF4F4] p-6 rounded-3xl border border-red-50 space-y-3">
-                            <h4 className="text-[10px] font-black text-red-500 uppercase tracking-widest flex items-center gap-2">
+                        <div className={`p-6 rounded-3xl border space-y-3 ${
+                            item.status === 'Validada' ? 'bg-green-50/50 border-green-100' : 'bg-red-50/50 border-red-100'
+                        }`}>
+                            <h4 className={`text-[10px] font-black uppercase tracking-widest flex items-center gap-2 ${
+                                item.status === 'Validada' ? 'text-green-600' : 'text-red-500'
+                            }`}>
                                 <AlertTriangle size={14} /> Alertas de Mesa
                             </h4>
                             <p className="text-xs font-black text-[#2B3674]">{item.alerts || "Sin alertas registradas"}</p>
@@ -303,7 +317,11 @@ const AccordionRow = ({ item, level, isExpanded, onToggle, filterStatus }: { ite
             case 'mun': return <Building2 size={14} className="text-[#05CD99]" />;
             case 'zone': return <LayoutGrid size={14} className="text-[#FFB547]" />;
             case 'post': return <ClipboardList size={14} className="text-[#7551FF]" />;
-            case 'table': return <div className="w-1 h-1 rounded-full bg-[#A3AED0] ml-1.5 mr-1" />;
+            case 'table': return (
+                <div className={`w-1.5 h-1.5 rounded-full ml-1.5 mr-1 ${
+                    item.status === 'Validada' ? 'bg-[#05CD99]' : 'bg-[#E31A1C]'
+                }`} title={item.status} />
+            );
             default: return null;
         }
     };
