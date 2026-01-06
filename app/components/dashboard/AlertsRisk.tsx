@@ -41,7 +41,6 @@ export default function AlertsRisk() {
                         <p className="text-[10px] font-black text-[#A3AED0] dark:text-gray-400 uppercase tracking-widest">Total</p>
                     </div>
                  </div>
-
                  {/* Bottom: 2 Columns */}
                  <div className="grid grid-cols-2 gap-4">
                     {/* Col 1: Counts */}
