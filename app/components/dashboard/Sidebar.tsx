@@ -79,9 +79,7 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
                 </div>
 
                 {/* Quick Links Label */}
-                <div className="px-6 pt-6 pb-2">
-                    <p className="text-xs font-semibold text-[#A3AED0] dark:text-gray-500 uppercase tracking-wider">Quick Links</p>
-                </div>
+                
 
                 {/* Menu */}
                 <div className="flex-1 overflow-y-auto px-4 py-2 space-y-1 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700">
