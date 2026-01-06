@@ -232,8 +232,8 @@ const CoverageMap = ({ data }: { data: any }) => {
           {/* Mapa Principal */}
           <div ref={mapRef} className="flex-1 h-full z-0" style={{ minHeight: '400px' }} />
 
-          {/* Info Box */}
-          <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-white z-[400] max-w-xs">
+          {/* Info Box - Moved to the right to avoid covering sidebar information */}
+          <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-white z-[400] max-w-xs">
             <div className="flex items-start gap-3">
               <div className="bg-indigo-100 p-2 rounded-lg text-indigo-600">
                 <Info size={18} />
