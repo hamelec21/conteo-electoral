@@ -33,7 +33,7 @@ const MetricItem = ({ icon: Icon, label, value, trend, color, iconColor }: any) 
 );
 
 export default function GeographicConfidenceAnalysis() {
-    const [selectedRegion, setSelectedRegion] = useState("Nacional");
+    const [selectedRegion, setSelectedRegion] = useState("Andina");
 
     // Gauge Data (Semi-circle)
     const data = [
@@ -42,22 +42,22 @@ export default function GeographicConfidenceAnalysis() {
     ];
 
     return (
-        <div className="h-full flex flex-col p-6 bg-white rounded-3xl">
+        <div className="h-full flex flex-col p-5 bg-white rounded-3xl shadow-sm border border-gray-50">
             {/* Header with Selector */}
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex justify-between items-center mb-4">
                 <div className="flex flex-col">
-                    <h3 className="text-[10px] font-black text-[#A3AED0] uppercase tracking-widest">INDICE DE CONFIANZA</h3>
+                    <h3 className="text-[9px] font-black text-[#A3AED0] uppercase tracking-widest">INDICE DE CONFIANZA</h3>
                 </div>
                 <div className="relative group">
-                    <button className="flex items-center gap-2 bg-[#F4F7FE] px-4 py-2 rounded-xl text-[10px] font-black text-[#2B3674] uppercase tracking-widest hover:bg-gray-100 transition-all">
-                        {selectedRegion} <ChevronDown size={14} />
+                    <button className="flex items-center gap-2 bg-[#F4F7FE] px-3 py-1.5 rounded-xl text-[9px] font-black text-[#2B3674] uppercase tracking-widest hover:bg-gray-100 transition-all border border-gray-100">
+                        {selectedRegion} <ChevronDown size={12} />
                     </button>
                 </div>
             </div>
 
-            <div className="flex flex-col gap-10 items-center justify-center flex-1">
+            <div className="flex flex-col gap-4 items-center justify-center">
                 {/* Gauge Container */}
-                <div className="flex flex-col items-center justify-center relative w-full max-w-[280px]">
+                <div className="flex flex-col items-center justify-center relative w-full max-w-[240px]">
                     <div className="w-full aspect-[2/1] relative">
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
@@ -67,8 +67,8 @@ export default function GeographicConfidenceAnalysis() {
                                     cy="100%"
                                     startAngle={180}
                                     endAngle={0}
-                                    innerRadius="60%"
-                                    outerRadius="90%"
+                                    innerRadius="65%"
+                                    outerRadius="95%"
                                     paddingAngle={2}
                                     dataKey="value"
                                     stroke="none"
@@ -83,29 +83,29 @@ export default function GeographicConfidenceAnalysis() {
                         {/* Gauge Needle */}
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-[42%] bg-[#4318FF] origin-bottom transition-all duration-1000 ease-out z-20" 
                              style={{ transform: 'translateX(-50%) rotate(30deg)' }}>
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#4318FF] rounded-full"></div>
-                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#4318FF] rounded-full border-2 border-white shadow-lg"></div>
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#4318FF] rounded-full shadow-sm"></div>
+                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-[#4318FF] rounded-full border-2 border-white shadow-md"></div>
                         </div>
                     </div>
 
-                    <div className="mt-8 text-center">
-                        <div className="flex items-center justify-center gap-4">
-                            <div className="h-1 w-8 bg-[#05CD99] rounded-full"></div>
+                    <div className="mt-4 text-center">
+                        <div className="flex items-center justify-center gap-3">
+                            <div className="h-1 w-6 bg-[#05CD99] rounded-full opacity-20"></div>
                             <div className="flex flex-col">
-                                <span className="text-3xl font-black text-[#2B3674] tracking-tight">15.51M</span>
-                                <div className="flex items-center justify-center gap-1 mt-1">
-                                    <TrendingUp size={14} className="text-[#05CD99]" />
-                                    <span className="text-xs font-black text-[#05CD99]">11.5%</span>
+                                <span className="text-2xl font-black text-[#2B3674] tracking-tight">15.51M</span>
+                                <div className="flex items-center justify-center gap-1">
+                                    <TrendingUp size={12} className="text-[#05CD99]" />
+                                    <span className="text-[10px] font-black text-[#05CD99]">11.5%</span>
                                 </div>
                             </div>
-                            <div className="h-1 w-8 bg-[#E5E7EB] rounded-full"></div>
+                            <div className="h-1 w-6 bg-gray-100 rounded-full"></div>
                         </div>
-                        <p className="text-[10px] font-bold text-[#A3AED0] uppercase tracking-widest mt-2 font-black">Votos Auditados</p>
+                        <p className="text-[9px] font-black text-[#A3AED0] uppercase tracking-widest mt-1">Votos Auditados</p>
                     </div>
                 </div>
 
                 {/* Metrics List (Stacked) */}
-                <div className="w-full flex flex-col gap-8 px-4">
+                <div className="w-full flex flex-col gap-4 px-2">
                     <MetricItem 
                         icon={FileText} 
                         label="E-14 procesados" 
@@ -133,7 +133,7 @@ export default function GeographicConfidenceAnalysis() {
                         trend="15.65%" 
                         iconColor="text-[#EE5D50]"
                     />
-                    <div className="pt-8 border-t border-gray-100">
+                    <div className="pt-4 border-t border-gray-50">
                         <MetricItem 
                             icon={Clock} 
                             label="pendientes por auditar" 
