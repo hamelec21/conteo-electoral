@@ -351,11 +351,9 @@ const AccordionRow = ({ item, level, isExpanded, onToggle, filterStatus }: { ite
                     <CandidateResultsRow results={item.results} />
                 </td>
                 <td className="px-8 py-5 text-center">
-                    <div className="flex items-center justify-center gap-1 h-6">
-                        {[30, 60, 40, 80].map((h, i) => (
-                            <div key={i} className={`w-1 rounded-full ${isExpanded ? 'bg-[#4318FF]' : 'bg-[#A3AED0] opacity-30'} transition-all`} style={{ height: `${h}%` }} />
-                        ))}
-                    </div>
+                    <button className="px-4 py-1.5 rounded-lg bg-[#F4F7FE] text-[#4318FF] text-[9px] font-black uppercase tracking-widest hover:bg-[#4318FF] hover:text-white transition-all border border-[#4318FF]/20 shadow-sm">
+                        Ver
+                    </button>
                 </td>
             </tr>
             
@@ -407,11 +405,49 @@ export default function RegionalAnalysisTable() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
             {/* Left Column: Table & Audit summary */}
             <div className="lg:col-span-3 space-y-6">
-                <Card className="border-0 shadow-lg rounded-3xl bg-white overflow-hidden flex flex-col">
+                {/* Summary stats standalone card */}
+                <Card className="border-0 shadow-lg rounded-3xl bg-white overflow-hidden border border-gray-50 bg-sky-200">
+                    <div className="p-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div className="space-y-2">
+                            <p className="text-[9px] font-black text-[#A3AED0] uppercase tracking-[0.1em]">Avance Nacional</p>
+                            <div className="flex items-center gap-3">
+                                <span className="text-xl font-black text-[#2B3674]">82.4%</span>
+                                <div className="h-2 w-20 bg-gray-100 rounded-full overflow-hidden">
+                                    <div className="h-full bg-[#4318FF] rounded-full" style={{ width: '82.4%' }}></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="space-y-2">
+                            <p className="text-[9px] font-black text-[#A3AED0] uppercase tracking-[0.1em]">Testigos Reportando</p>
+                            <p className="text-xl font-black text-[#2B3674]">12.4K <span className="text-xs text-[#A3AED0] font-bold">/ 19.8K</span></p>
+                        </div>
+                        <div className="space-y-2">
+                            <p className="text-[9px] font-black text-[#A3AED0] uppercase tracking-[0.1em]">Tendencia Líder</p>
+                            <div className="flex items-center gap-2">
+                                <div className="w-2.5 h-2.5 rounded-full bg-[#E31A1C]"></div>
+                                <span className="text-xs font-black text-[#2B3674] uppercase">Iván Cepeda</span>
+                            </div>
+                        </div>
+                        <div className="space-y-2">
+                            <p className="text-[9px] font-black text-[#A3AED0] uppercase tracking-[0.1em]">Integridad</p>
+                            <div className="flex items-center gap-2">
+                                <CheckCircle2 size={16} className="text-[#05CD99]" />
+                                <span className="text-xs font-black text-[#05CD99]">100% Validado</span>
+                            </div>
+                        </div>
+                    </div>
+                </Card>
+
+                <Card className="border-0 shadow-lg rounded-3xl bg-white overflow-hidden flex flex-col border border-gray-50">
                     <CardHeader className="p-8 border-b border-gray-50 flex flex-col xl:flex-row xl:items-center justify-between gap-6">
-                        <div className="flex flex-col gap-1">
-                            <CardTitle className="text-xl font-black text-[#2B3674] tracking-tight">Análisis Jerárquico de Resultados</CardTitle>
-                            <p className="text-xs font-bold text-[#A3AED0] uppercase tracking-widest mt-1">Exploración multinivel por expansión</p>
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-2xl bg-[#F4F7FE] flex items-center justify-center p-2 shadow-inner border border-white">
+                                <img src="/images/regiones/andina.png" alt="Región Andina" className="w-full h-full object-contain" />
+                            </div>
+                            <div className="flex flex-col gap-0.5">
+                                <CardTitle className="text-xl font-black text-[#2B3674] tracking-tight">Región Andina</CardTitle>
+                                <p className="text-xs font-bold text-[#A3AED0] uppercase tracking-widest">Desglose Técnico Avanzado</p>
+                            </div>
                         </div>
                         
                         <div className="flex flex-wrap items-center gap-4">
@@ -448,36 +484,6 @@ export default function RegionalAnalysisTable() {
                             </div>
                         </div>
                     </CardHeader>
-
-                    <div className="bg-[#F4F7FE]/50 border-b border-gray-50 p-6 grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <div className="space-y-1">
-                            <p className="text-[9px] font-black text-[#A3AED0] uppercase tracking-[0.1em]">Avance Nacional</p>
-                            <div className="flex items-center gap-2">
-                                <span className="text-lg font-black text-[#2B3674]">82.4%</span>
-                                <div className="h-1.5 w-16 bg-gray-200 rounded-full overflow-hidden">
-                                    <div className="h-full bg-[#4318FF] rounded-full" style={{ width: '82.4%' }}></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="space-y-1">
-                            <p className="text-[9px] font-black text-[#A3AED0] uppercase tracking-[0.1em]">Testigos Reportando</p>
-                            <p className="text-lg font-black text-[#2B3674]">12.4K <span className="text-[10px] text-[#A3AED0] font-bold">/ 19.8K</span></p>
-                        </div>
-                        <div className="space-y-1">
-                            <p className="text-[9px] font-black text-[#A3AED0] uppercase tracking-[0.1em]">Tendencia Líder</p>
-                            <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-[#E31A1C]"></div>
-                                <span className="text-[10px] font-black text-[#2B3674] uppercase">Iván Cepeda</span>
-                            </div>
-                        </div>
-                        <div className="space-y-1">
-                            <p className="text-[9px] font-black text-[#A3AED0] uppercase tracking-[0.1em]">Integridad</p>
-                            <div className="flex items-center gap-1.5">
-                                <CheckCircle2 size={12} className="text-[#05CD99]" />
-                                <span className="text-[10px] font-black text-[#05CD99]">100% Validado</span>
-                            </div>
-                        </div>
-                    </div>
                     
                     <CardContent className="p-0 flex-1 flex flex-col min-h-[300px] overflow-hidden">
                         <div className="flex-1 overflow-y-auto overflow-x-auto">
