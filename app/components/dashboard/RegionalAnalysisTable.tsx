@@ -351,11 +351,9 @@ const AccordionRow = ({ item, level, isExpanded, onToggle, filterStatus }: { ite
                     <CandidateResultsRow results={item.results} />
                 </td>
                 <td className="px-8 py-5 text-center">
-                    <div className="flex items-center justify-center gap-1 h-6">
-                        {[30, 60, 40, 80].map((h, i) => (
-                            <div key={i} className={`w-1 rounded-full ${isExpanded ? 'bg-[#4318FF]' : 'bg-[#A3AED0] opacity-30'} transition-all`} style={{ height: `${h}%` }} />
-                        ))}
-                    </div>
+                    <button className="px-4 py-1.5 rounded-lg bg-[#F4F7FE] text-[#4318FF] text-[9px] font-black uppercase tracking-widest hover:bg-[#4318FF] hover:text-white transition-all border border-[#4318FF]/20 shadow-sm">
+                        Ver
+                    </button>
                 </td>
             </tr>
             
@@ -409,9 +407,14 @@ export default function RegionalAnalysisTable() {
             <div className="lg:col-span-3 space-y-6">
                 <Card className="border-0 shadow-lg rounded-3xl bg-white overflow-hidden flex flex-col">
                     <CardHeader className="p-8 border-b border-gray-50 flex flex-col xl:flex-row xl:items-center justify-between gap-6">
-                        <div className="flex flex-col gap-1">
-                            <CardTitle className="text-xl font-black text-[#2B3674] tracking-tight">Análisis Jerárquico de Resultados</CardTitle>
-                            <p className="text-xs font-bold text-[#A3AED0] uppercase tracking-widest mt-1">Exploración multinivel por expansión</p>
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-2xl bg-[#F4F7FE] flex items-center justify-center p-2 shadow-inner border border-white">
+                                <img src="/images/regiones/andina.png" alt="Región Andina" className="w-full h-full object-contain" />
+                            </div>
+                            <div className="flex flex-col gap-0.5">
+                                <CardTitle className="text-xl font-black text-[#2B3674] tracking-tight">Región Andina</CardTitle>
+                                <p className="text-xs font-bold text-[#A3AED0] uppercase tracking-widest">Desglose Técnico Avanzado</p>
+                            </div>
                         </div>
                         
                         <div className="flex flex-wrap items-center gap-4">
