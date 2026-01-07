@@ -10,6 +10,8 @@ import {
     CheckCircle, Signal, Home, Book, 
     LifeBuoy, Send, X
 } from "lucide-react";
+import Image from "next/image";
+
 
 const MENU_ITEMS = [
     { name: "Dashboard", slug: "", icon: Home },
@@ -60,14 +62,28 @@ export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose
             `}>
                 {/* Logo Area */}
                 <div className="h-20 flex items-center justify-between px-6 border-b border-gray-50 dark:border-gray-800 flex-shrink-0">
-                    <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-gradient-to-br from-[#4318FF] to-[#7551FF] rounded-lg flex items-center justify-center">
-                            <span className="text-white font-bold text-sm">E</span>
-                        </div>
-                        <h1 className="text-lg font-bold text-[#2B3674] dark:text-white">
-                            Electoral<span className="text-[#4318FF]">UX</span>
-                        </h1>
-                    </div>
+                    <Link href="/" className="flex items-center gap-2">
+                        {/* Light Mode Logo */}
+                        <Image 
+                            src="/images/logo/marlopoli_azul.png"
+                            alt="Marlopolí Logo"
+                            width={160}
+                            height={40}
+                            className="h-10 w-auto object-contain dark:hidden"
+                            priority
+                        />
+                        {/* Dark Mode Logo */}
+                        <Image 
+                            src="/images/logo/marlopoli_blanco.png"
+                            alt="Marlopolí Logo"
+                            width={160}
+                            height={40}
+                            className="h-10 w-auto object-contain hidden dark:block"
+                            priority
+                        />
+                    </Link>
+
+
 
                     {/* Mobile Close Button */}
                     <button 
